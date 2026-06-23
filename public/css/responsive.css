@@ -1,0 +1,16 @@
+/* ========================================================
+   responsive.css - MEDIA QUERIES UNTUK MOBILE & TABLET
+   ======================================================== */
+@media (min-width: 992px) {
+    .custom-sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .main-content {
+        margin-left: 280px;
+    }
+}
+
+/* Nanti kita akan tambahkan kode agar tabel di HP bisa digeser ke kanan-kiri di sini */

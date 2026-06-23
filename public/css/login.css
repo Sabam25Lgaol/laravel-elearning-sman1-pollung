@@ -1,0 +1,110 @@
+/* ========================================================
+   Login.css - KHUSUS HALAMAN LOGIN & AUTENTIKASI
+   ======================================================== */
+body.login-body {
+    background-color: #fafbfc;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* EDIT DI SINI: Diubah dari center menjadi flex-start agar naik */
+    justify-content: flex-start;
+    /* TAMBAHKAN INI: Memberi jarak 10% dari atas layar agar posisinya pas dan ideal */
+    padding-top: 10vh;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    z-index: 10;
+}
+
+/* --- Bagian Logo & Teks --- */
+.brand-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.brand-icon {
+    background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+    color: white;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+}
+
+.brand-text {
+    text-align: left;
+}
+
+.brand-title {
+    font-weight: 900;
+    font-size: 1.7rem;
+    color: #0f172a;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.brand-subtitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748b;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- Kartu Login --- */
+.login-card {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    padding: 45px 30px;
+    text-align: center;
+}
+
+/* --- Tombol Google --- */
+.btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    background-color: #f0f9ff;
+    color: #0284c7;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid #e0f2fe;
+    border-radius: 8px;
+    padding: 12px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-google:hover {
+    background-color: #e0f2fe;
+    border-color: #bae6fd;
+    transform: translateY(-2px);
+}
+
+/* --- Footer --- */
+.footer-text {
+    position: absolute;
+    bottom: 25px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 500;
+}

@@ -1,0 +1,25 @@
+/* ========================================================
+   ujian.css - KOMPONEN KHUSUS UJIAN & KOREKSI
+   ======================================================== */
+.text-purple { color: #6f42c1 !important; }
+.bg-purple { background-color: #6f42c1 !important; color: white !important; }
+.border-purple { border-color: #6f42c1 !important; }
+
+.soal-image {
+    max-height: 200px;
+}
+.koreksi-image {
+    max-height: 250px;
+}
+.jawaban-essay {
+    white-space: pre-wrap;
+}
+.nilai-input {
+    width: 100px;
+    font-size: 1.2rem;
+}
+.floating-footer {
+    bottom: 20px;
+    z-index: 1000;
+    border-radius: 15px;
+}

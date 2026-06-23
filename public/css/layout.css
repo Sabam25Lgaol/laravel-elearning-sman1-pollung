@@ -1,0 +1,75 @@
+/* ========================================================
+   layout.css - STRUKTUR UTAMA (SIDEBAR & NAVBAR)
+   ======================================================== */
+.wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.custom-sidebar {
+    width: 280px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid #e2e8f0;
+    z-index: 1045;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 1.5rem 1.5rem 0.5rem;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    color: var(--sidebar-color);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    margin: 4px 16px;
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar-link i {
+    width: 24px;
+    font-size: 1.1rem;
+    margin-right: 12px;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-link:hover {
+    background-color: var(--sidebar-hover);
+    color: var(--primary-blue);
+}
+
+.sidebar-link:hover i {
+    transform: translateX(3px);
+}
+
+/* Efek Menu Aktif (Sesuai Referensi) */
+.sidebar-link.active {
+    background-color: transparent;
+    color: var(--primary-blue);
+    font-weight: 800;
+    border-right: 4px solid var(--primary-blue); /* Garis biru di kanan */
+    border-radius: 0;
+}
+
+.main-content {
+    flex-grow: 1;
+    min-width: 0;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.top-navbar {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0;
+}

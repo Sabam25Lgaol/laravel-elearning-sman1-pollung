@@ -1,0 +1,28 @@
+:root {
+    /* Palet Warna Sesuai Referensi PCR */
+    --sidebar-bg: #baddf0; /* Warna Biru Muda Soft khas di referensi */
+    --sidebar-color: #334155; /* Teks abu-abu gelap kebiruan */
+    --sidebar-hover: #a6cde2; /* Biru yang sedikit lebih gelap saat disorot */
+    --primary-blue: #0284c7; /* Biru utama untuk teks aktif/tombol */
+    --bg-body: #f4f7fa; /* Latar belakang konten abu-abu sangat terang/bersih */
+}
+
+body {
+    background-color: var(--bg-body) !important;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- Global Utility Classes --- */
+.border-start-5-primary { border-left: 5px solid var(--primary-blue) !important; }
+.border-start-5-success { border-left: 5px solid #198754 !important; }
+.border-start-5-danger { border-left: 5px solid #dc3545 !important; }
+.border-bottom-5-success { border-bottom: 5px solid #198754 !important; }
+.border-bottom-5-warning { border-bottom: 5px solid #ffc107 !important; }
+.border-bottom-5-info { border-bottom: 5px solid #0dcaf0 !important; }
+.border-bottom-5-danger { border-bottom: 5px solid #dc3545 !important; }
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.2s ease;
+}

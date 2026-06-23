@@ -1,0 +1,50 @@
+/* ========================================================
+   guru.css - KOMPONEN KHUSUS HALAMAN GURU PENGAJAR
+   ======================================================== */
+
+/* --- Dashboard & Kelola Kelas Guru --- */
+.card-kelas-guru {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    border-left: 5px solid var(--primary-blue);
+    background-color: white;
+}
+.card-kelas-guru:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important;
+}
+
+/* --- Manajemen Tugas & Penilaian (Indikator Warna) --- */
+.badge-menunggu-koreksi {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 0.35em 0.65em;
+    border-radius: 50rem;
+}
+.badge-sudah-dinilai {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+    padding: 0.35em 0.65em;
+    border-radius: 50rem;
+}
+
+/* --- Tabel Rekap & Evaluasi Siswa --- */
+/* (Memberi warna merah muda pada baris tabel jika nilai/absensi siswa di bawah standar) */
+.row-siswa-kritis {
+    background-color: #f8d7da !important;
+    transition: background-color 0.2s ease;
+}
+.row-siswa-kritis:hover {
+    background-color: #f1b0b7 !important;
+}
+
+/* --- Tombol Aksi Guru --- */
+.btn-koreksi {
+    transition: all 0.2s ease;
+    border-radius: 8px;
+}
+.btn-koreksi:hover {
+    transform: scale(1.05);
+}
