@@ -37,8 +37,8 @@
                                     <span class="fw-bold text-dark fs-6">{{ $p->nama_pelajaran }}</span>
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('guru.absensi', $p->id) }}" class="btn btn-outline-info btn-sm fw-bold rounded-pill px-4 shadow-sm transition-all">
-                                        Isi Absensi <i class="fas fa-arrow-right ms-1"></i>
+                                    <a href="{{ route('guru.absensi', $p->id) }}" class="btn btn-outline-info btn-sm fw-bold rounded-pill shadow-sm transition-all guru-action-button">
+                                        Isi Absensi
                                     </a>
                                 </td>
                             </tr>

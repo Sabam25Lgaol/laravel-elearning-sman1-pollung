@@ -3,10 +3,10 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
-        <div class="card shadow-sm border-0 border-start border-success border-4">
+        <div class="card shadow-sm border-0 border-start border-primary border-4">
             <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div>
-                    <h4 class="text-success mb-1 fw-bold"><i class="fas fa-check-circle me-2"></i>Penilaian Tugas: {{ $tugas->judul_tugas }}</h4>
+                    <h4 class="text-primary mb-1 fw-bold"><i class="fas fa-check-circle me-2"></i>Penilaian Tugas: {{ $tugas->judul_tugas }}</h4>
                     <p class="text-muted mb-0"><i class="fas fa-book me-1"></i> Mata Pelajaran: <strong>{{ $tugas->pelajaran->nama_pelajaran }}</strong></p>
                 </div>
                 <a href="{{ route('guru.tugas', $tugas->pelajaran_id) }}" class="btn btn-outline-secondary fw-bold shadow-sm">
@@ -26,7 +26,7 @@
     @endif
 
     <div class="col-md-12 mb-4">
-        <div class="card shadow-sm border-0 border-top border-success border-4">
+        <div class="card shadow-sm border-0 border-top border-primary border-4">
             <div class="card-header bg-white fw-bold text-dark">
                 <i class="fas fa-users me-1"></i> Daftar Siswa yang Mengumpulkan
             </div>

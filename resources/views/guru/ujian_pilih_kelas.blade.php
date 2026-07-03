@@ -3,16 +3,16 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
-        <div class="card shadow-sm border-0 border-start border-success border-4">
+        <div class="card shadow-sm border-0 border-start border-info border-4">
             <div class="card-body">
-                <h4 class="text-success mb-1 fw-bold"><i class="fas fa-laptop-code me-2"></i>Pilih Kelas: Kelola Ujian</h4>
+                <h4 class="text-info mb-1 fw-bold"><i class="fas fa-laptop-code me-2"></i>Pilih Kelas: Kelola Ujian</h4>
                 <p class="text-muted mb-0">Silakan pilih mata pelajaran di bawah ini untuk membuat soal ujian atau mengoreksi nilai siswa.</p>
             </div>
         </div>
     </div>
 
     <div class="col-md-12">
-        <div class="card shadow-sm border-0 rounded-4 overflow-hidden bg-white border-top border-success border-4">
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden bg-white border-top border-info border-4">
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-hover align-middle mb-0 text-nowrap">
@@ -29,7 +29,7 @@
                             <tr>
                                 <td class="px-4 text-center text-muted fw-bold">{{ $index + 1 }}</td>
                                 <td>
-                                    <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill fw-bold border border-success border-opacity-25">
+                                    <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill fw-bold border border-info border-opacity-25">
                                         <i class="fas fa-door-open me-1"></i> {{ $p->dataKelas->nama_kelas ?? '-' }}
                                     </span>
                                 </td>
@@ -37,8 +37,8 @@
                                     <span class="fw-bold text-dark fs-6">{{ $p->nama_pelajaran }}</span>
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('guru.ujian', $p->id) }}" class="btn btn-outline-success btn-sm fw-bold rounded-pill px-4 shadow-sm transition-all">
-                                        Kelola Ujian <i class="fas fa-arrow-right ms-1"></i>
+                                    <a href="{{ route('guru.ujian', $p->id) }}" class="btn btn-outline-info btn-sm fw-bold rounded-pill shadow-sm transition-all guru-action-button">
+                                        Kelola Ujian
                                     </a>
                                 </td>
                             </tr>

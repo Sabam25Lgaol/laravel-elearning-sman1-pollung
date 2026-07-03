@@ -3,10 +3,10 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
-        <div class="card shadow-sm border-0 border-start border-danger border-4">
+        <div class="card shadow-sm border-0 border-start border-primary border-4">
             <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div>
-                    <h4 class="text-danger mb-1 fw-bold"><i class="fas fa-calendar-check me-2"></i>Kelola Absensi: {{ $pelajaran->nama_pelajaran }}</h4>
+                    <h4 class="text-primary mb-1 fw-bold"><i class="fas fa-calendar-check me-2"></i>Kelola Absensi: {{ $pelajaran->nama_pelajaran }}</h4>
                     <p class="text-muted mb-0">Catat kehadiran harian dan pantau rekapitulasi per pertemuan.</p>
                 </div>
                 <a href="{{ route('guru.absensi.index') }}" class="btn btn-outline-secondary fw-bold shadow-sm rounded-pill px-4">
@@ -34,7 +34,7 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link rounded-pill fw-bold px-4 text-dark" id="pills-rekap-tab" data-bs-toggle="pill" data-bs-target="#pills-rekap" type="button" role="tab" aria-controls="pills-rekap" aria-selected="false">
-                    <i class="fas fa-list-ol me-1 text-danger"></i> Daftar Pertemuan
+                    <i class="fas fa-list-ol me-1 text-primary"></i> Daftar Pertemuan
                 </button>
             </li>
         </ul>
@@ -45,8 +45,8 @@
                 <div class="card shadow-sm border-0 bg-light mb-4 rounded-4">
                     <div class="card-body py-3">
                         <form action="{{ route('guru.absensi', $pelajaran->id) }}" method="GET" class="d-flex align-items-center flex-wrap gap-3">
-                            <label class="fw-bold text-dark mb-0"><i class="fas fa-calendar-alt me-1 text-danger"></i> Pilih Tanggal Absensi:</label>
-                            <input type="date" name="tanggal" class="form-control w-auto border-danger shadow-sm fw-bold text-danger rounded-pill px-3" value="{{ $tanggal }}" onchange="this.form.submit()">
+                            <label class="fw-bold text-dark mb-0"><i class="fas fa-calendar-alt me-1 text-primary"></i> Pilih Tanggal Absensi:</label>
+                            <input type="date" name="tanggal" class="form-control w-auto border-primary shadow-sm fw-bold text-primary rounded-pill px-3" value="{{ $tanggal }}" onchange="this.form.submit()">
 
                             @if(isset($riwayat_pertemuan[$tanggal]))
                                 <span class="badge bg-primary rounded-pill px-3 py-2 shadow-sm">Pertemuan Ke-{{ $riwayat_pertemuan[$tanggal]['pertemuan'] }}</span>
@@ -57,9 +57,9 @@
                     </div>
                 </div>
 
-                <div class="card shadow-sm border-0 border-top border-danger border-4 rounded-4 overflow-hidden">
+                <div class="card shadow-sm border-0 border-top border-primary border-4 rounded-4 overflow-hidden">
                     <div class="card-header bg-white fw-bold text-dark d-flex justify-content-between align-items-center py-3">
-                        <span><i class="fas fa-users me-1 text-danger"></i> Daftar Siswa Kelas Ini</span>
+                        <span><i class="fas fa-users me-1 text-primary"></i> Daftar Siswa Kelas Ini</span>
                         <span class="badge bg-danger fs-6 shadow-sm rounded-pill px-3"><i class="far fa-calendar-alt me-1"></i> {{ \Carbon\Carbon::parse($tanggal)->format('d F Y') }}</span>
                     </div>
                     <div class="card-body p-0">
@@ -114,7 +114,7 @@
                                 </table>
                             </div>
                             <div class="card-footer bg-light text-end p-3 border-top-0">
-                                <button type="submit" class="btn btn-danger fw-bold px-4 rounded-pill shadow-sm transition-all">
+                                <button type="submit" class="btn btn-primary fw-bold px-4 rounded-pill shadow-sm transition-all">
                                     <i class="fas fa-save me-1"></i> Simpan Absensi
                                 </button>
                             </div>

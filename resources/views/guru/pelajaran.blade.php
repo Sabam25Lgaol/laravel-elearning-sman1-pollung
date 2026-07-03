@@ -24,7 +24,7 @@
     @endif
 
     <div class="col-md-12 mb-4">
-        <div class="card shadow-sm border-0 border-top border-success border-4">
+        <div class="card shadow-sm border-0 border-top border-primary border-4">
             <div class="card-header bg-white">
                 <h6 class="mb-0 fw-bold">Daftar Pelajaran Saya</h6>
             </div>

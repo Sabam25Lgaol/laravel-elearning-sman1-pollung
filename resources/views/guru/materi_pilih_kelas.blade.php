@@ -37,8 +37,8 @@
                                     <span class="fw-bold text-dark fs-6">{{ $p->nama_pelajaran }}</span>
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('guru.materi', $p->id) }}" class="btn btn-outline-info btn-sm fw-bold rounded-pill px-4 shadow-sm transition-all">
-                                        Kelola Materi <i class="fas fa-arrow-right ms-1"></i>
+                                    <a href="{{ route('guru.materi', $p->id) }}" class="btn btn-outline-info btn-sm fw-bold rounded-pill shadow-sm transition-all guru-action-button">
+                                        Kelola Materi
                                     </a>
                                 </td>
                             </tr>

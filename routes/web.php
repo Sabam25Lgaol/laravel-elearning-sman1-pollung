@@ -35,6 +35,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('login');
 
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+
+    return redirect()->route('login');
+})->middleware('auth')->name('logout');
+
 // 2. ALUR LOGIN GOOGLE
 Route::prefix('auth/google')->group(function () {
     Route::get('/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');

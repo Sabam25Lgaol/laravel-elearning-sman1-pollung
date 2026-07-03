@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/ujian.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 </head>
-<body>
+<body class="{{ Auth::check() && Auth::user()->hasRole('Guru') ? 'guru-ui' : '' }}">
 
     <div class="wrapper">
 
@@ -50,7 +50,7 @@
                 </span>
             </div>
 
-            <div class="offcanvas-body flex-column p-0 py-3 overflow-y-auto">
+            <div class="offcanvas-body d-flex flex-column p-0 py-3 overflow-y-auto">
 
                 @hasrole('Admin')
                     <div class="sidebar-header-text">Pusat Komando</div>
@@ -111,6 +111,15 @@
                     </a>
                 @endhasrole
 
+                <div class="mt-auto px-3 pt-3">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger w-100 fw-bold rounded-3 py-2">
+                            <i class="fas fa-sign-out-alt me-2"></i> Logout
+                        </button>
+                    </form>
+                </div>
+
             </div>
         </div>
 
@@ -133,9 +142,6 @@
                             <div class="text-muted" style="font-size: 0.75rem;">{{ Auth::user()->email }}</div>
                         </div>
 
-                        <a href="/" class="btn btn-danger btn-sm fw-bold px-3 shadow-sm" style="border-radius: 8px;">
-                            <i class="fas fa-sign-out-alt me-1"></i> <span class="d-none d-sm-inline">Logout</span>
-                        </a>
                     </div>
                 </div>
             </nav>

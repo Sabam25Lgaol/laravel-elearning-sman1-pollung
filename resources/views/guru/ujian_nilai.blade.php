@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
-        <div class="card shadow-sm border-0 border-start border-4 border-purple">
+        <div class="card shadow-sm border-0 border-start border-4 border-primary">
             <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div>
                     <h4 class="mb-1 fw-bold text-purple"><i class="fas fa-clipboard-check me-2"></i>Daftar Nilai: {{ $ujian->judul_ujian }}</h4>
@@ -28,7 +28,7 @@
     @endif
 
     <div class="col-md-12">
-        <div class="card shadow-sm border-0 border-top border-4 border-purple">
+        <div class="card shadow-sm border-0 border-top border-4 border-primary">
             <div class="card-header bg-white fw-bold text-dark py-3">
                 <i class="fas fa-users me-1 text-secondary"></i> Daftar Siswa & Status Ujian
             </div>

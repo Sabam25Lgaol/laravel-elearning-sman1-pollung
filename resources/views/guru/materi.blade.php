@@ -94,9 +94,9 @@
                                 <td>
                                     <div class="d-flex flex-column gap-1 align-items-start">
                                         @if($materi->file_materi)
-                                            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger px-3 py-2 rounded-pill shadow-sm">
+                                            <a href="{{ asset('uploads/materi/' . $materi->file_materi) }}" target="_blank" rel="noopener noreferrer" class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2 rounded-pill shadow-sm text-decoration-none" title="Buka lampiran">
                                                 <i class="fas fa-file-pdf me-1"></i> File
-                                            </span>
+                                            </a>
                                         @endif
 
                                         @if($materi->link_youtube)
@@ -114,14 +114,14 @@
                                 <td class="small text-muted fw-bold">{{ $materi->created_at->format('d M Y') }}</td>
 
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-sm btn-outline-warning fw-bold text-dark rounded-pill px-3 me-1 shadow-sm transition-all" data-bs-toggle="modal" data-bs-target="#editMateri{{ $materi->id }}">
+                                    <button type="button" class="btn btn-sm btn-outline-info fw-bold rounded-pill me-1 shadow-sm transition-all guru-row-action" data-bs-toggle="modal" data-bs-target="#editMateri{{ $materi->id }}">
                                         Edit
                                     </button>
 
                                     <form action="{{ route('guru.materi.delete', $materi->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm transition-all" onclick="return confirm('Yakin ingin menghapus materi ini? File akan terhapus permanen.')">Hapus</button>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger fw-bold rounded-pill shadow-sm transition-all guru-row-action" onclick="return confirm('Yakin ingin menghapus materi ini? File akan terhapus permanen.')">Hapus</button>
                                     </form>
                                 </td>
                             </tr>
@@ -183,7 +183,7 @@
 
                     @if($materi->file_materi)
                         <div class="mt-4 text-center">
-                            <a href="{{ asset('uploads/materi/' . $materi->file_materi) }}" target="_blank" class="btn btn-danger fw-bold rounded-pill px-5 py-2 shadow-sm transition-all">
+                            <a href="{{ asset('uploads/materi/' . $materi->file_materi) }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary fw-bold rounded-pill px-5 py-2 shadow-sm transition-all">
                                 <i class="fas fa-file-pdf me-2"></i> Buka Lampiran File PDF/Dokumen
                             </a>
                         </div>
@@ -207,9 +207,9 @@
     <div class="modal fade" id="editMateri{{ $materi->id }}" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content rounded-4 border-0 shadow">
-                <div class="modal-header bg-warning border-0" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
-                    <h5 class="modal-title fw-bold text-dark"><i class="fas fa-edit me-2"></i>Edit Materi</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header bg-info border-0" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                    <h5 class="modal-title fw-bold text-white"><i class="fas fa-edit me-2"></i>Edit Materi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('guru.materi.update', $materi->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -235,7 +235,7 @@
                     </div>
                     <div class="modal-footer bg-light border-0" style="border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;">
                         <button type="button" class="btn btn-secondary rounded-pill px-4 fw-bold" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-warning fw-bold text-dark rounded-pill px-4 shadow-sm">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-info fw-bold text-white rounded-pill px-4 shadow-sm">Simpan Perubahan</button>
                     </div>
                 </form>
             </div>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
-        <div class="card shadow-sm border-0 bg-primary bg-opacity-10">
+        <div class="card guru-hero shadow-sm border-0">
             <div class="card-body p-4">
                 <h4 class="text-primary fw-bold mb-2">Dashboard Guru</h4>
                 <p class="text-muted mb-3">Selamat datang, <b>Bapak/Ibu {{ $guru->name }}</b>. Berikut adalah ringkasan aktivitas dan kelas yang Anda ampu.</p>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="col-6 col-md-3 mb-4">
-        <div class="card shadow-sm border-0 border-start border-primary border-4 h-100">
+        <div class="card guru-stat-card stat-blue shadow-sm border-0 h-100">
             <div class="card-body py-3 py-md-4">
                 <div class="text-muted small fw-bold text-uppercase mb-1" style="font-size: 0.75rem;">Total Kelas</div>
                 <h3 class="fw-bold text-dark mb-0">{{ $total_pelajaran }} <small class="fs-6 text-muted fw-normal">Kelas</small></h3>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="col-6 col-md-3 mb-4">
-        <div class="card shadow-sm border-0 border-start border-info border-4 h-100">
+        <div class="card guru-stat-card stat-cyan shadow-sm border-0 h-100">
             <div class="card-body py-3 py-md-4">
                 <div class="text-muted small fw-bold text-uppercase mb-1" style="font-size: 0.75rem;">Total Materi</div>
                 <h3 class="fw-bold text-dark mb-0">{{ $total_materi }} <small class="fs-6 text-muted fw-normal">Materi</small></h3>
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="col-6 col-md-3 mb-4">
-        <div class="card shadow-sm border-0 border-start border-warning border-4 h-100">
+        <div class="card guru-stat-card stat-amber shadow-sm border-0 h-100">
             <div class="card-body py-3 py-md-4">
                 <div class="text-muted small fw-bold text-uppercase mb-1" style="font-size: 0.75rem;">Total Tugas</div>
                 <h3 class="fw-bold text-dark mb-0">{{ $total_tugas }} <small class="fs-6 text-muted fw-normal">Tugas</small></h3>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="col-6 col-md-3 mb-4">
-        <div class="card shadow-sm border-0 border-start border-success border-4 h-100">
+        <div class="card guru-stat-card stat-emerald shadow-sm border-0 h-100">
             <div class="card-body py-3 py-md-4">
                 <div class="text-muted small fw-bold text-uppercase mb-1" style="font-size: 0.75rem;">Total Ujian</div>
                 <h3 class="fw-bold text-dark mb-0">{{ $total_ujian }} <small class="fs-6 text-muted fw-normal">Ujian</small></h3>

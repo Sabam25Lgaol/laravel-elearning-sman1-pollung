@@ -16,6 +16,19 @@
     flex-direction: column;
 }
 
+.custom-sidebar .offcanvas-body {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+@media (min-width: 992px) {
+    .custom-sidebar {
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+}
+
 .sidebar-header-text {
     font-size: 0.75rem;
     font-weight: 700;
