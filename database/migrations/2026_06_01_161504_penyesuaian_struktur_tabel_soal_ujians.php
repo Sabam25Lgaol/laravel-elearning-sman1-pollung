@@ -11,12 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('soal_ujians', function (Blueprint $table) {
-            // 1. Tambah kolom untuk jenis soal dan gambar
-            $table->enum('jenis_soal', ['pilihan_ganda', 'essay'])->default('pilihan_ganda')->after('ujian_id');
-            $table->string('gambar_soal')->nullable()->after('pertanyaan');
+        if (!Schema::hasColumn('soal_ujians', 'jenis_soal')) {
+            Schema::table('soal_ujians', function (Blueprint $table) {
+                $table->enum('jenis_soal', ['pilihan_ganda', 'essay'])->default('pilihan_ganda')->after('ujian_id');
+            });
+        }
 
-            // 2. Ubah kolom pilihan dan kunci jawaban menjadi Boleh Kosong (Nullable) untuk soal Essay
+        if (!Schema::hasColumn('soal_ujians', 'gambar_soal')) {
+            Schema::table('soal_ujians', function (Blueprint $table) {
+                $table->string('gambar_soal')->nullable()->after('pertanyaan');
+            });
+        }
+
+        Schema::table('soal_ujians', function (Blueprint $table) {
             $table->string('pilihan_a')->nullable()->change();
             $table->string('pilihan_b')->nullable()->change();
             $table->string('pilihan_c')->nullable()->change();
@@ -30,10 +37,19 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('soal_ujians', function (Blueprint $table) {
-            // Rollback jika terjadi kesalahan
-            $table->dropColumn(['jenis_soal', 'gambar_soal']);
+        if (Schema::hasColumn('soal_ujians', 'jenis_soal')) {
+            Schema::table('soal_ujians', function (Blueprint $table) {
+                $table->dropColumn('jenis_soal');
+            });
+        }
 
+        if (Schema::hasColumn('soal_ujians', 'gambar_soal')) {
+            Schema::table('soal_ujians', function (Blueprint $table) {
+                $table->dropColumn('gambar_soal');
+            });
+        }
+
+        Schema::table('soal_ujians', function (Blueprint $table) {
             $table->string('pilihan_a')->nullable(false)->change();
             $table->string('pilihan_b')->nullable(false)->change();
             $table->string('pilihan_c')->nullable(false)->change();

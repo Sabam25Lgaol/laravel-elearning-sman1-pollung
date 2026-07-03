@@ -35,6 +35,8 @@ class StoreUjianRequest extends FormRequest
             'durasi' => 'required|numeric|min:5',
             'waktu_mulai' => 'required|date',
             'waktu_selesai' => 'required|date|after:waktu_mulai',
+            'acak_soal' => 'nullable|boolean',
+            'acak_jawaban' => 'nullable|boolean',
         ];
     }
 }

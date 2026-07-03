@@ -62,22 +62,32 @@
                         @if($soal->jenis_soal == 'pilihan_ganda')
                             <p class="text-muted small fst-italic mb-2"><i class="fas fa-info-circle"></i> Pilih jawaban (Bisa menceklis lebih dari satu jika perlu).</p>
 
-                            <div class="form-check mb-3 bg-light p-2 rounded border border-1">
-                                <input class="form-check-input ms-1 border-primary" type="checkbox" name="jawaban[{{ $soal->id }}][]" id="soal_{{ $soal->id }}_A" value="A">
-                                <label class="form-check-label w-100 ms-2 fw-bold" for="soal_{{ $soal->id }}_A">A. {{ $soal->pilihan_a }}</label>
-                            </div>
-                            <div class="form-check mb-3 bg-light p-2 rounded border border-1">
-                                <input class="form-check-input ms-1 border-primary" type="checkbox" name="jawaban[{{ $soal->id }}][]" id="soal_{{ $soal->id }}_B" value="B">
-                                <label class="form-check-label w-100 ms-2 fw-bold" for="soal_{{ $soal->id }}_B">B. {{ $soal->pilihan_b }}</label>
-                            </div>
-                            <div class="form-check mb-3 bg-light p-2 rounded border border-1">
-                                <input class="form-check-input ms-1 border-primary" type="checkbox" name="jawaban[{{ $soal->id }}][]" id="soal_{{ $soal->id }}_C" value="C">
-                                <label class="form-check-label w-100 ms-2 fw-bold" for="soal_{{ $soal->id }}_C">C. {{ $soal->pilihan_c }}</label>
-                            </div>
-                            <div class="form-check mb-3 bg-light p-2 rounded border border-1">
-                                <input class="form-check-input ms-1 border-primary" type="checkbox" name="jawaban[{{ $soal->id }}][]" id="soal_{{ $soal->id }}_D" value="D">
-                                <label class="form-check-label w-100 ms-2 fw-bold" for="soal_{{ $soal->id }}_D">D. {{ $soal->pilihan_d }}</label>
-                            </div>
+                            @php
+                                $pilihan = collect([
+                                    ['kode' => 'A', 'teks' => $soal->pilihan_a],
+                                    ['kode' => 'B', 'teks' => $soal->pilihan_b],
+                                    ['kode' => 'C', 'teks' => $soal->pilihan_c],
+                                    ['kode' => 'D', 'teks' => $soal->pilihan_d],
+                                ]);
+
+                                if ($ujian->acak_jawaban) {
+                                    $seedJawaban = $ujian->id . '-' . Auth::id() . '-' . $soal->id;
+                                    $pilihan = $pilihan
+                                        ->sortBy(fn ($item) => crc32($seedJawaban . '-' . $item['kode']))
+                                        ->values();
+                                }
+                            @endphp
+
+                            @foreach($pilihan as $opsiIndex => $opsi)
+                                @php
+                                    $labelTampil = chr(65 + $opsiIndex);
+                                    $opsiId = 'soal_' . $soal->id . '_' . $opsi['kode'];
+                                @endphp
+                                <div class="form-check mb-3 bg-light p-2 rounded border border-1">
+                                    <input class="form-check-input ms-1 border-primary" type="checkbox" name="jawaban[{{ $soal->id }}][]" id="{{ $opsiId }}" value="{{ $opsi['kode'] }}">
+                                    <label class="form-check-label w-100 ms-2 fw-bold" for="{{ $opsiId }}">{{ $labelTampil }}. {{ $opsi['teks'] }}</label>
+                                </div>
+                            @endforeach
 
                         @else
                             <p class="text-muted small fst-italic mb-2"><i class="fas fa-info-circle"></i> Ketik jawaban Anda pada kotak di bawah ini.</p>

@@ -3,10 +3,10 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
-        <div class="card shadow-sm border-0 border-start border-primary border-4 rounded-4">
+        <div class="card shadow-sm border-0 border-start border-info border-4 rounded-4">
             <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div>
-                    <h4 class="mb-1 fw-bold text-primary"><i class="fas fa-flask me-2"></i>Kelola Ujian / Quiz: {{ $pelajaran->nama_pelajaran }}</h4>
+                    <h4 class="mb-1 fw-bold text-info"><i class="fas fa-flask me-2"></i>Kelola Ujian / Quiz: {{ $pelajaran->nama_pelajaran }}</h4>
                     <p class="text-muted mb-0">Buat jadwal ujian, tentukan durasi, dan masukkan soal-soal pilihan ganda.</p>
                 </div>
                 <a href="{{ route('guru.pelajaran.show', $pelajaran->id) }}" class="btn btn-outline-secondary fw-bold shadow-sm rounded-pill px-4">
@@ -40,7 +40,7 @@
 
     <div class="col-md-4 mb-4">
         <div class="card shadow-sm border-0 rounded-4">
-            <div class="card-header text-white fw-bold bg-primary border-0 py-3" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            <div class="card-header text-white fw-bold bg-info border-0 py-3" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
                 <i class="fas fa-plus-circle me-1"></i> Buat Wadah Ujian Baru
             </div>
             <div class="card-body p-4 bg-light">
@@ -71,7 +71,22 @@
                         <textarea name="deskripsi" class="form-control shadow-sm border-0 rounded-3" rows="3" placeholder="Harap kerjakan dengan jujur..."></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary text-white w-100 fw-bold shadow-sm rounded-pill py-2">
+                    <div class="mb-4 p-3 bg-white rounded-4 border border-info border-opacity-25 shadow-sm">
+                        <div class="fw-bold text-info mb-2">
+                            <i class="fas fa-random me-1"></i> Pengacakan Ujian
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" role="switch" name="acak_soal" value="1" id="acakSoal">
+                            <label class="form-check-label fw-bold small" for="acakSoal">Acak urutan soal setiap siswa</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="acak_jawaban" value="1" id="acakJawaban">
+                            <label class="form-check-label fw-bold small" for="acakJawaban">Acak pilihan jawaban A/B/C/D</label>
+                        </div>
+                        <small class="text-muted d-block mt-2">Jika aktif, tampilan soal/jawaban tiap siswa dibuat berbeda tetapi penilaian tetap otomatis.</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-info text-white w-100 fw-bold shadow-sm rounded-pill py-2">
                         <i class="fas fa-save me-1"></i> Simpan Ujian
                     </button>
                 </form>
@@ -80,9 +95,9 @@
     </div>
 
     <div class="col-md-8 mb-4">
-        <div class="card shadow-sm border-0 border-top border-primary border-4 rounded-4 overflow-hidden">
+        <div class="card shadow-sm border-0 border-top border-info border-4 rounded-4 overflow-hidden">
             <div class="card-header bg-white fw-bold text-dark py-3">
-                <i class="fas fa-list-alt me-1 text-primary"></i> Daftar Ujian yang Telah Dibuat
+                <i class="fas fa-list-alt me-1 text-info"></i> Daftar Ujian yang Telah Dibuat
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -98,7 +113,24 @@
                         <tbody>
                             @forelse($ujians as $u)
                             <tr>
-                                <td class="px-4 fw-bold text-primary">{{ $u->judul_ujian }}</td>
+                                <td class="px-4">
+                                    <div class="fw-bold text-info text-break">{{ $u->judul_ujian }}</div>
+                                    <div class="d-flex flex-wrap gap-1 mt-2">
+                                        @if($u->acak_soal)
+                                            <span class="badge bg-info bg-opacity-10 text-info border border-info rounded-pill">
+                                                <i class="fas fa-random me-1"></i>Soal Acak
+                                            </span>
+                                        @endif
+                                        @if($u->acak_jawaban)
+                                            <span class="badge bg-info bg-opacity-10 text-info border border-info rounded-pill">
+                                                <i class="fas fa-list-ul me-1"></i>Jawaban Acak
+                                            </span>
+                                        @endif
+                                        @if(!$u->acak_soal && !$u->acak_jawaban)
+                                            <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary rounded-pill">Tidak Diacak</span>
+                                        @endif
+                                    </div>
+                                </td>
 
                                 <td class="small">
                                     <div class="d-flex flex-column gap-1">
@@ -113,22 +145,22 @@
 
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center gap-1 flex-wrap">
-                                        <a href="{{ route('guru.ujian.nilai', $u->id) }}" class="btn btn-sm btn-success fw-bold shadow-sm rounded-pill px-3">
+                                        <a href="{{ route('guru.ujian.nilai', $u->id) }}" class="btn btn-sm btn-outline-info fw-bold shadow-sm rounded-pill px-3">
                                             <i class="fas fa-clipboard-check me-1"></i> Lihat Nilai
                                         </a>
 
-                                        <a href="{{ route('guru.ujian.soal', $u->id) }}" class="btn btn-sm btn-primary fw-bold shadow-sm rounded-pill px-3">
+                                        <a href="{{ route('guru.ujian.soal', $u->id) }}" class="btn btn-sm btn-info text-white fw-bold shadow-sm rounded-pill px-3">
                                             <i class="fas fa-tasks me-1"></i> Kelola Soal
                                         </a>
 
-                                        <button type="button" class="btn btn-sm btn-warning fw-bold text-dark shadow-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#editUjian{{ $u->id }}">
+                                        <button type="button" class="btn btn-sm btn-outline-info fw-bold shadow-sm rounded-pill px-3 guru-row-action" data-bs-toggle="modal" data-bs-target="#editUjian{{ $u->id }}">
                                             Edit
                                         </button>
 
                                         <form action="{{ route('guru.ujian.delete', $u->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger fw-bold shadow-sm rounded-pill px-3" onclick="return confirm('YAKIN HAPUS UJIAN INI? Semua soal dan nilai siswa akan ikut terhapus permanen!')">Hapus</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-danger fw-bold shadow-sm rounded-pill px-3 guru-row-action" onclick="return confirm('YAKIN HAPUS UJIAN INI? Semua soal dan nilai siswa akan ikut terhapus permanen!')">Hapus</button>
                                         </form>
                                     </div>
                                 </td>
@@ -154,7 +186,7 @@
 <div class="modal fade text-start" id="editUjian{{ $u->id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg rounded-4">
-            <div class="modal-header bg-primary text-white border-0 py-3" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            <div class="modal-header bg-info text-white border-0 py-3" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
                 <h5 class="modal-title fw-bold"><i class="fas fa-pen me-2"></i>Edit Detail Ujian</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -182,10 +214,23 @@
                         <label class="form-label fw-bold small text-dark">Keterangan / Aturan Ujian</label>
                         <textarea name="deskripsi" class="form-control shadow-sm border-0 rounded-3" rows="3">{{ $u->deskripsi }}</textarea>
                     </div>
+                    <div class="mb-3 p-3 bg-white rounded-4 border border-info border-opacity-25 shadow-sm">
+                        <div class="fw-bold text-info mb-2">
+                            <i class="fas fa-random me-1"></i> Pengacakan Ujian
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" role="switch" name="acak_soal" value="1" id="editAcakSoal{{ $u->id }}" {{ $u->acak_soal ? 'checked' : '' }}>
+                            <label class="form-check-label fw-bold small" for="editAcakSoal{{ $u->id }}">Acak urutan soal setiap siswa</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="acak_jawaban" value="1" id="editAcakJawaban{{ $u->id }}" {{ $u->acak_jawaban ? 'checked' : '' }}>
+                            <label class="form-check-label fw-bold small" for="editAcakJawaban{{ $u->id }}">Acak pilihan jawaban A/B/C/D</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer bg-white border-0" style="border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;">
                     <button type="button" class="btn btn-secondary fw-bold rounded-pill px-4 shadow-sm" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary fw-bold rounded-pill px-4 shadow-sm">Simpan Perubahan</button>
+                    <button type="submit" class="btn btn-info text-white fw-bold rounded-pill px-4 shadow-sm">Simpan Perubahan</button>
                 </div>
             </form>
         </div>

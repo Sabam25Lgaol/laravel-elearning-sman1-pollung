@@ -3,13 +3,13 @@
    ======================================================== */
 
 .guru-ui {
-    --guru-primary: #2563eb;
-    --guru-primary-dark: #1d4ed8;
-    --guru-primary-soft: #eff6ff;
+    --guru-primary: #0284c7;
+    --guru-primary-dark: #0369a1;
+    --guru-primary-soft: #f0f9ff;
     --guru-border: #dbe5f1;
     --guru-text: #1e293b;
     --guru-muted: #64748b;
-    --bs-primary-rgb: 37, 99, 235;
+    --bs-primary-rgb: 2, 132, 199;
     --bs-info-rgb: 2, 132, 199;
 }
 
@@ -126,9 +126,175 @@
     --bs-btn-hover-color: #fff;
 }
 
+.guru-ui .guru-student-answer {
+    max-width: 420px;
+    max-height: 140px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.55;
+}
+
+.guru-ui .guru-student-answer-modal {
+    max-height: 360px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.65;
+}
+
+.guru-ui .guru-submission-meta {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.guru-ui .guru-correction-card {
+    overflow: hidden;
+}
+
+.guru-ui .guru-question-box,
+.guru-ui .guru-answer-panel,
+.guru-ui .guru-key-panel,
+.guru-ui .guru-score-panel {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+.guru-ui .guru-correction-card .card-body {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+}
+
+.guru-ui .guru-question-box {
+    background: #ffffff;
+}
+
+.guru-ui .guru-answer-panel {
+    border-left: 4px solid #0284c7;
+}
+
+.guru-ui .guru-key-panel {
+    border-left: 4px solid #16a34a;
+}
+
+.guru-ui .guru-score-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.guru-ui .guru-question-text {
+    font-size: 0.95rem;
+}
+
+.guru-ui .guru-answer-choice {
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.guru-ui .guru-essay-answer {
+    max-height: 160px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.55;
+}
+
+.guru-ui .guru-save-panel {
+    border-radius: 18px;
+}
+
+.guru-ui .guru-attendance-tabs {
+    border: 1px solid #e0f2fe;
+}
+
+.guru-ui .guru-attendance-tabs .nav-link {
+    color: #334155;
+}
+
+.guru-ui .guru-attendance-tabs .nav-link.active {
+    background: #0284c7;
+    color: #fff !important;
+    box-shadow: 0 8px 18px rgba(2, 132, 199, 0.22);
+}
+
+.guru-ui .guru-attendance-status .btn {
+    min-width: 72px;
+    border-width: 1px;
+}
+
+.guru-ui .guru-attendance-status .btn-check:checked + .btn-outline-success {
+    background: #16a34a;
+    border-color: #16a34a;
+    color: #fff;
+}
+
+.guru-ui .guru-attendance-status .btn-check:checked + .btn-outline-warning {
+    background: #f59e0b;
+    border-color: #f59e0b;
+    color: #111827 !important;
+}
+
+.guru-ui .guru-attendance-status .btn-check:checked + .btn-outline-info {
+    background: #0284c7;
+    border-color: #0284c7;
+    color: #fff;
+}
+
+.guru-ui .guru-attendance-status .btn-check:checked + .btn-outline-danger {
+    background: #e11d48;
+    border-color: #e11d48;
+    color: #fff;
+}
+
+.guru-ui .guru-pg-summary {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #0284c7;
+    border-radius: 14px;
+    padding: 10px 14px;
+}
+
+.guru-ui .guru-pg-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 38px;
+}
+
+.guru-ui .guru-pg-label {
+    color: #475569;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.guru-ui .guru-pg-value {
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.guru-ui .guru-score-panel .nilai-input {
+    max-width: 100px;
+    min-height: 40px;
+    font-size: 1rem;
+}
+
+.guru-ui .guru-correction-card .small.text-uppercase {
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+}
+
 .guru-hero {
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-    border: 1px solid #bfdbfe !important;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1px solid #bae6fd !important;
     overflow: hidden;
     position: relative;
 }
@@ -141,7 +307,7 @@
     right: -55px;
     top: -85px;
     border-radius: 50%;
-    background: rgba(37, 99, 235, 0.08);
+    background: rgba(2, 132, 199, 0.10);
 }
 
 .guru-stat-card {
@@ -161,7 +327,7 @@
     background: var(--stat-soft);
 }
 
-.guru-stat-card.stat-blue { --stat-color: #2563eb; --stat-soft: #dbeafe; }
+.guru-stat-card.stat-blue { --stat-color: #0284c7; --stat-soft: #e0f2fe; }
 .guru-stat-card.stat-cyan { --stat-color: #0891b2; --stat-soft: #cffafe; }
 .guru-stat-card.stat-amber { --stat-color: #d97706; --stat-soft: #fef3c7; }
 .guru-stat-card.stat-emerald { --stat-color: #059669; --stat-soft: #d1fae5; }

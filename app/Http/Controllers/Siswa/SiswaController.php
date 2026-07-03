@@ -138,6 +138,15 @@ class SiswaController extends Controller
             return redirect()->route('siswa.ujian', $ujian->pelajaran_id)->with('error', 'Anda sudah mengerjakan ujian ini!');
         }
 
+        if ($ujian->acak_soal) {
+            $seed = $ujian->id . '-' . Auth::id();
+            $soalsAcak = $ujian->soal
+                ->sortBy(fn ($soal) => crc32($seed . '-' . $soal->id))
+                ->values();
+
+            $ujian->setRelation('soal', $soalsAcak);
+        }
+
         return view('siswa.kerjakan_ujian', compact('ujian'));
     }
 

@@ -2,31 +2,23 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Ujian;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Pelajaran;
 use Illuminate\Support\Facades\Auth;
 
-class StoreUjianRequest extends FormRequest
+class UpdateUjianRequest extends FormRequest
 {
-    /**
-     * Tentukan apakah pengguna diizinkan (Authorization)
-     * Hanya guru pengampu pelajaran yang boleh membuat ujian!
-     */
     public function authorize(): bool
     {
-        $pelajaran_id = $this->route('id'); // Ambil dari URL
-        $pelajaran = Pelajaran::find($pelajaran_id);
+        $ujian = Ujian::with('pelajaran')->find($this->route('id'));
 
-        if (!$pelajaran) {
+        if (!$ujian || !$ujian->pelajaran) {
             return false;
         }
 
-        return $pelajaran->guru_id === Auth::id();
+        return $ujian->pelajaran->guru_id === Auth::id();
     }
 
-    /**
-     * Aturan validasi (Pengecekan Form)
-     */
     public function rules(): array
     {
         return [
@@ -35,6 +27,8 @@ class StoreUjianRequest extends FormRequest
             'durasi' => 'required|numeric|min:5',
             'waktu_mulai' => 'required|date',
             'waktu_selesai' => 'required|date|after:waktu_mulai',
+            'acak_soal' => 'nullable|boolean',
+            'acak_jawaban' => 'nullable|boolean',
         ];
     }
 }

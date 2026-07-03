@@ -3,16 +3,16 @@
 @section('content')
 <div class="row">
     <div class="col-12 mb-4">
-        <div class="card shadow-sm border-0 border-start border-primary border-4">
+        <div class="card shadow-sm border-0 border-start border-info border-4 rounded-4">
             <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div>
-                    <h4 class="mb-1 fw-bold text-primary"><i class="fas fa-list-ol me-2"></i>Kelola Soal: {{ $ujian->judul_ujian }}</h4>
+                    <h4 class="mb-1 fw-bold text-info text-break"><i class="fas fa-list-ol me-2"></i>Kelola Soal: {{ $ujian->judul_ujian }}</h4>
                     <p class="text-muted mb-0">
                         <i class="fas fa-book me-1"></i> Pelajaran: <strong>{{ $ujian->pelajaran->nama_pelajaran }}</strong> |
                         <i class="fas fa-clock me-1"></i> Durasi: <strong>{{ $ujian->durasi }} Menit</strong>
                     </p>
                 </div>
-                <a href="{{ route('guru.ujian', $ujian->pelajaran_id) }}" class="btn btn-outline-secondary fw-bold shadow-sm">
+                <a href="{{ route('guru.ujian', $ujian->pelajaran_id) }}" class="btn btn-outline-secondary fw-bold shadow-sm rounded-pill px-4 py-2">
                     <i class="fas fa-arrow-left me-1"></i> Kembali ke Daftar Ujian
                 </a>
             </div>
@@ -42,8 +42,8 @@
     @endif
 
     <div class="col-12 col-lg-5 mb-4">
-        <div class="card shadow-sm border-0 sticky-top" style="top: 20px; z-index: 1;">
-            <div class="card-header bg-primary text-white fw-bold">
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden sticky-top" style="top: 20px; z-index: 1;">
+            <div class="card-header bg-info text-white fw-bold py-3">
                 <i class="fas fa-plus-circle me-1"></i> Tambah Soal Baru
             </div>
             <div class="card-body">
@@ -53,7 +53,7 @@
                     <div class="row mb-3">
                         <div class="col-md-12 mb-3">
                             <label class="form-label fw-bold text-dark">Jenis Soal <span class="text-danger">*</span></label>
-                            <select name="jenis_soal" id="jenis_soal" class="form-select border-primary fw-bold text-primary shadow-sm">
+                            <select name="jenis_soal" id="jenis_soal" class="form-select border-info fw-bold text-info shadow-sm">
                                 <option value="pilihan_ganda">Pilihan Ganda</option>
                                 <option value="essay">Essay</option>
                             </select>
@@ -72,7 +72,7 @@
 
                     <div id="area_pilihan_ganda">
                         <hr class="text-muted">
-                        <h6 class="fw-bold text-primary"><i class="fas fa-tasks me-1"></i> Opsi Jawaban Pilihan Ganda</h6>
+                        <h6 class="fw-bold text-info"><i class="fas fa-tasks me-1"></i> Opsi Jawaban Pilihan Ganda</h6>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold text-muted">Pilihan A</label>
@@ -115,7 +115,7 @@
                     </div>
 
                     <div class="text-end mt-3">
-                        <button type="submit" class="btn btn-primary fw-bold px-4 shadow-sm w-100">
+                        <button type="submit" class="btn btn-info text-white fw-bold px-4 shadow-sm w-100 rounded-pill py-2">
                             <i class="fas fa-save me-1"></i> Simpan Soal
                         </button>
                     </div>
@@ -127,11 +127,11 @@
     <div class="col-12 col-lg-7">
         <h5 class="fw-bold mb-3 text-dark d-flex align-items-center">
             <i class="fas fa-layer-group me-2 text-secondary"></i>Daftar Soal Tersimpan
-            <span class="badge bg-primary rounded-pill ms-2">{{ $soals->count() }} Soal</span>
+            <span class="badge bg-info rounded-pill ms-2">{{ $soals->count() }} Soal</span>
         </h5>
 
         @forelse($soals as $index => $soal)
-        <div class="card shadow-sm border-0 mb-3 border-start border-4 border-{{ $soal->jenis_soal == 'essay' ? 'warning' : 'primary' }}">
+        <div class="card shadow-sm border-0 mb-3 rounded-4 border-start border-4 border-{{ $soal->jenis_soal == 'essay' ? 'warning' : 'info' }}">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                     <p class="fw-bold mb-0 fs-5 text-dark">
@@ -140,13 +140,13 @@
                         @if($soal->jenis_soal == 'essay')
                             <span class="badge bg-warning text-dark ms-2"><i class="fas fa-pen-nib me-1"></i>Essay</span>
                         @else
-                            <span class="badge bg-primary ms-2"><i class="fas fa-list-ul me-1"></i>Pilihan Ganda</span>
+                            <span class="badge bg-info ms-2"><i class="fas fa-list-ul me-1"></i>Pilihan Ganda</span>
                         @endif
                     </p>
                     <form action="{{ route('guru.ujian.soal.delete', $soal->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-outline-danger fw-bold" onclick="return confirm('Yakin ingin menghapus soal ini?')">
+                        <button type="submit" class="btn btn-sm btn-outline-danger fw-bold rounded-pill" onclick="return confirm('Yakin ingin menghapus soal ini?')">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </form>

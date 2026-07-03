@@ -54,6 +54,8 @@ class UjianController extends Controller
             'durasi' => $request->durasi,
             'waktu_mulai' => $request->waktu_mulai,
             'waktu_selesai' => $request->waktu_selesai,
+            'acak_soal' => $request->boolean('acak_soal'),
+            'acak_jawaban' => $request->boolean('acak_jawaban'),
         ]);
 
         return back()->with('success', 'Wadah ujian berhasil dibuat! Silakan klik tombol "Kelola Soal".');
@@ -112,6 +114,8 @@ class UjianController extends Controller
             'durasi' => $request->durasi,
             'waktu_mulai' => $request->waktu_mulai,
             'waktu_selesai' => $request->waktu_selesai,
+            'acak_soal' => $request->boolean('acak_soal'),
+            'acak_jawaban' => $request->boolean('acak_jawaban'),
         ]);
 
         return back()->with('success', 'Jadwal dan detail ujian berhasil diperbarui!');
