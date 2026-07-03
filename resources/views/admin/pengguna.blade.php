@@ -80,7 +80,7 @@
                             <tr>
                                 <td class="px-4 py-3">
                                     <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-circle bg-info bg-opacity-10 text-info border border-info border-opacity-25">
+                                        <div class="avatar-circle admin-soft-avatar">
                                             {{ strtoupper(substr($user->name, 0, 1)) }}
                                         </div>
                                         <div>
@@ -95,7 +95,7 @@
                                     @elseif($user->hasRole('Guru'))
                                         <span class="badge bg-success bg-opacity-10 text-success border border-success rounded-pill px-3 py-1"><i class="fas fa-chalkboard-teacher me-1"></i> Guru</span>
                                     @else
-                                        <span class="badge bg-info bg-opacity-10 text-info border border-info rounded-pill px-3 py-1"><i class="fas fa-user-graduate me-1"></i> Siswa</span>
+                                        <span class="badge admin-soft-badge rounded-pill px-3 py-1"><i class="fas fa-user-graduate me-1"></i> Siswa</span>
                                     @endif
                                 </td>
                                 <td class="fw-bold text-secondary">
@@ -103,7 +103,7 @@
                                 </td>
                                 <td>
                                     @if($user->hasRole('Siswa'))
-                                        <span class="badge bg-info bg-opacity-10 text-dark border border-info rounded-pill px-3 py-1"><i class="fas fa-school me-1"></i> {{ $user->kelas ?? 'Belum diset' }}</span>
+                                        <span class="badge admin-soft-badge rounded-pill px-3 py-1"><i class="fas fa-school me-1"></i> {{ $user->kelas ?? 'Belum diset' }}</span>
                                     @else
                                         <span class="text-muted small fst-italic">Bukan Siswa</span>
                                     @endif
@@ -144,12 +144,12 @@
             <form action="{{ route('admin.ubah_role', $user->id) }}" method="POST">
                 @csrf
                 <div class="modal-body bg-light p-4">
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-muted text-uppercase">Email / Gmail Login *</label>
                         <input type="email" name="email" class="form-control border-0 bg-light" placeholder="email@gmail.com" value="{{ $user->email }}" required>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-muted text-uppercase">Tetapkan Jabatan *</label>
                         <select name="role" class="form-select role-select border-0 bg-light" required>
                             <option value="Siswa" {{ $user->hasRole('Siswa') ? 'selected' : '' }}>Siswa</option>
@@ -158,12 +158,12 @@
                         </select>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-muted text-uppercase">Nomor Induk (NIS/NIP) *</label>
                         <input type="text" name="nomor_induk" class="form-control border-0 bg-light" placeholder="Wajib diisi..." value="{{ $user->nomor_induk }}" required>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info kelas-container" style="display: {{ $user->hasRole('Siswa') ? 'block' : 'none' }};">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 kelas-container" style="display: {{ $user->hasRole('Siswa') ? 'block' : 'none' }};">
                         <label class="form-label fw-bold small text-muted text-uppercase">Pilih Kelas <span class="text-danger">*</span></label>
                         <select name="kelas" class="form-select kelas-select border-0 bg-light" {{ $user->hasRole('Siswa') ? 'required' : '' }}>
                             <option value="">-- Pilih Kelas --</option>
@@ -196,17 +196,17 @@
                 @csrf
                 <div class="modal-body text-start bg-light p-4">
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-muted text-uppercase">Nama Lengkap *</label>
                         <input type="text" name="name" class="form-control border-0 bg-light" placeholder="Masukkan nama lengkap" required>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-muted text-uppercase">Email (Akun Login) *</label>
                         <input type="email" name="email" class="form-control border-0 bg-light" placeholder="email@sekolah.com" required>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-muted text-uppercase">Tetapkan Jabatan *</label>
                         <select name="role" class="form-select role-select border-0 bg-light" required>
                             <option value="">-- Pilih Jabatan --</option>
@@ -216,12 +216,12 @@
                         </select>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-muted text-uppercase">Nomor Induk (NIS/NIP) *</label>
                         <input type="text" name="nomor_induk" class="form-control border-0 bg-light" placeholder="Wajib diisi..." required>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info kelas-container" style="display: none;">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 kelas-container" style="display: none;">
                         <label class="form-label fw-bold small text-muted text-uppercase">Pilih Kelas <span class="text-danger">*</span></label>
                         <select name="kelas" class="form-select kelas-select border-0 bg-light">
                             <option value="">-- Pilih Kelas --</option>

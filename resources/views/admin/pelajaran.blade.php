@@ -10,11 +10,11 @@
             <div class="card-body p-4 bg-light">
                 <form action="{{ route('admin.pelajaran.store') }}" method="POST">
                     @csrf
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-dark">Nama Pelajaran *</label>
                         <input type="text" name="nama_pelajaran" class="form-control border-0 bg-light" placeholder="Contoh: Matematika" required>
                     </div>
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-dark">Tugaskan ke Guru *</label>
                         <select name="guru_id" class="form-select border-0 bg-light" required>
                             <option value="">-- Pilih Guru --</option>
@@ -23,7 +23,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-dark">Pilih Kelas (Otomatis Masuk) *</label>
                         <select name="kelas" class="form-select border-0 bg-light" required>
                             <option value="">-- Pilih Kelas --</option>
@@ -32,7 +32,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-dark">Deskripsi</label>
                         <textarea name="deskripsi" class="form-control border-0 bg-light" rows="3" placeholder="Opsional..."></textarea>
                     </div>
@@ -48,7 +48,7 @@
         @if(session('success')) <div class="alert alert-success fw-bold shadow-sm rounded-3 border-0">{{ session('success') }}</div> @endif
         @if($errors->any()) <div class="alert alert-danger fw-bold shadow-sm rounded-3 border-0">Ada kesalahan input data.</div> @endif
 
-        <div class="card shadow-sm border-0 rounded-4 overflow-hidden border-top border-info border-4">
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
             <div class="card-header bg-white fw-bold text-dark py-3">
                 <i class="fas fa-book text-info me-1"></i> Daftar Mata Pelajaran
             </div>
@@ -99,11 +99,11 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="modal-body bg-light p-4">
-                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                                                             <label class="form-label fw-bold small text-dark">Nama Pelajaran *</label>
                                                             <input type="text" name="nama_pelajaran" class="form-control border-0 bg-light" value="{{ $p->nama_pelajaran }}" required>
                                                         </div>
-                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                                                             <label class="form-label fw-bold small text-dark">Ganti Guru *</label>
                                                             <select name="guru_id" class="form-select border-0 bg-light" required>
                                                                 @foreach($gurus as $guru)
@@ -111,7 +111,7 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
-                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                                                             <label class="form-label fw-bold small text-dark">Pindah Kelas *</label>
                                                             <select name="kelas" class="form-select border-0 bg-light" required>
                                                                 @foreach($kelasList as $kelas)
@@ -120,7 +120,7 @@
                                                             </select>
                                                             <small class="text-danger">Peringatan: Mengganti kelas akan mereset ulang seluruh siswa yang terdaftar ke pelajaran ini!</small>
                                                         </div>
-                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                                                             <label class="form-label fw-bold small text-dark">Deskripsi</label>
                                                             <textarea name="deskripsi" class="form-control border-0 bg-light" rows="3">{{ $p->deskripsi }}</textarea>
                                                         </div>

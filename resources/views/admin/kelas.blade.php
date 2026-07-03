@@ -87,11 +87,11 @@
                                                 <form action="{{ route('admin.kelas.update', $k->id) }}" method="POST">
                                                     @csrf
                                                     <div class="modal-body bg-light p-4">
-                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                                                             <label class="form-label fw-bold small text-dark">Nama Kelas *</label>
                                                             <input type="text" name="nama_kelas" class="form-control border-0 bg-light" value="{{ $k->nama_kelas }}" required>
                                                         </div>
-                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                                                        <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                                                             <label class="form-label fw-bold small text-dark">Deskripsi / Wali Kelas</label>
                                                             <textarea name="deskripsi" class="form-control border-0 bg-light" rows="3" placeholder="Opsional...">{{ $k->deskripsi }}</textarea>
                                                         </div>
@@ -127,11 +127,11 @@
             <form action="{{ route('admin.kelas.store') }}" method="POST">
                 @csrf
                 <div class="modal-body text-start bg-light p-4">
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-dark">Nama Kelas *</label>
                         <input type="text" name="nama_kelas" class="form-control border-0 bg-light" placeholder="Contoh: 10 IPA 1" required>
                     </div>
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3">
                         <label class="form-label fw-bold small text-dark">Deskripsi / Wali Kelas</label>
                         <textarea name="deskripsi" class="form-control border-0 bg-light" rows="3" placeholder="Opsional (misal: Wali Kelas Bapak Sabam)"></textarea>
                     </div>

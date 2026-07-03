@@ -26,7 +26,9 @@
 
 .admin-ui .text-info { color: #0369a1 !important; }
 .admin-ui .border-info { border-color: #0284c7 !important; }
-.admin-ui .bg-info { background-color: #0284c7 !important; }
+.admin-ui .bg-info {
+    background-color: rgba(var(--bs-info-rgb), var(--bs-bg-opacity, 1)) !important;
+}
 .admin-ui .btn-outline-info {
     --bs-btn-color: #0369a1;
     --bs-btn-border-color: #0284c7;
@@ -39,6 +41,27 @@
     background: #e0f2fe;
     color: #0369a1;
     border: 1px solid rgba(2, 132, 199, 0.35);
+}
+
+.admin-ui .admin-soft-badge {
+    background: #e0f2fe !important;
+    color: #0369a1 !important;
+    border: 1px solid rgba(2, 132, 199, 0.28) !important;
+}
+
+.admin-ui .admin-soft-avatar {
+    background: #e0f2fe !important;
+    color: #0369a1 !important;
+    border: 1px solid rgba(2, 132, 199, 0.28) !important;
+}
+
+.admin-ui .admin-student-check {
+    background: #fff;
+    transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.admin-ui .admin-student-check:hover {
+    background: #f8fafc;
 }
 
 .bg-gradient-admin {
