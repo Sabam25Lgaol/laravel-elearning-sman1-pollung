@@ -47,11 +47,11 @@ class AdminController extends Controller
     {
         // Validasi sudah hilang dari sini karena diurus oleh StorePenggunaRequest di pintu depan!
 
-        // Buat user baru (Password default: password123)
+        // Buat user baru. Login utama memakai OAuth Google, jadi password dibuat acak untuk keamanan.
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt('password123'), // Bisa dipakai kalau login manual
+            'password' => bcrypt(\Illuminate\Support\Str::random(32)),
             'nomor_induk' => $request->nomor_induk,
             // Logika cerdas: Kalau jabatannya bukan Siswa, kelas otomatis dikosongkan (null)
             'kelas' => $request->role === 'Siswa' ? $request->kelas : null,
@@ -66,17 +66,35 @@ class AdminController extends Controller
     public function ubahRole(Request $request, $id)
     {
         $user = User::findOrFail($id);
+        $isSuperAdmin = $user->email == 'sabamgaol25@gmail.com';
+        $roleSaatIni = $user->roles->pluck('name')->first();
 
-        // Cegah Admin Utama mengubah jabatannya sendiri agar tidak error/terkunci
-        if ($user->email == 'sabamgaol25@gmail.com') {
+        $request->validate([
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'required|in:Admin,Guru,Siswa',
+            'nomor_induk' => 'required|string|max:255',
+            'kelas' => 'required_if:role,Siswa|nullable|string|max:255',
+        ]);
+
+        $emailBerubah = $user->email !== $request->email;
+
+        if ($isSuperAdmin && $request->role !== $roleSaatIni) {
             return back()->with('error', 'Jabatan Super Admin tidak boleh diubah!');
         }
 
         // Simpan NIS / NIP dan KELAS ke database
-        $user->update([
+        $dataUpdate = [
+            'email' => $request->email,
             'nomor_induk' => $request->nomor_induk,
             'kelas' => $request->role === 'Siswa' ? $request->kelas : null // Update agar selaras: Jika diubah ke Guru, hapus kelasnya
-        ]);
+        ];
+
+        if ($emailBerubah) {
+            $dataUpdate['google_id'] = null;
+            $dataUpdate['avatar'] = null;
+        }
+
+        $user->update($dataUpdate);
 
         // Ganti jabatan menggunakan fitur Spatie
         $user->syncRoles($request->role);

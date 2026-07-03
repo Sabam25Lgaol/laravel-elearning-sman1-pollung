@@ -27,7 +27,7 @@
 
     <div class="col-md-12 mb-4">
         <div class="card shadow-sm border-0 border-top border-info border-4 rounded-4 overflow-hidden">
-            <div class="card-header bg-white fw-bold text-dark py-3">
+            <div class="card-header bg-white fbold text-dark py-3">
                 <i class="fas fa-users me-1 text-info"></i> Daftar Siswa yang Mengumpulkan
             </div>
             <div class="card-body p-0">

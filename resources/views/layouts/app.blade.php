@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/ujian.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 </head>
-<body class="{{ Auth::check() && Auth::user()->hasRole('Guru') ? 'guru-ui' : '' }}">
+<body class="@if(Auth::check() && Auth::user()->hasRole('Guru')) guru-ui @elseif(Auth::check() && Auth::user()->hasRole('Admin')) admin-ui @endif">
 
     <div class="wrapper">
 

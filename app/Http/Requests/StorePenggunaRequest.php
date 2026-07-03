@@ -23,7 +23,8 @@ class StorePenggunaRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'role' => 'required|in:Admin,Guru,Siswa',
-            // Kita juga bisa menambahkan validasi untuk NIS/NIP jika mau, tapi ini sudah cukup mengikuti yang lama.
+            'nomor_induk' => 'required|string|max:255',
+            'kelas' => 'required_if:role,Siswa|nullable|string|max:255',
         ];
     }
 }

@@ -3,8 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
-        <!-- CLEAN CODE: border-radius dipindah ke rounded-4 bawaan Bootstrap -->
-        <div class="card border-0 bg-gradient-admin text-white shadow-sm rounded-4">
+        <div class="card border-0 bg-gradient-admin text-white shadow-sm rounded-4 admin-hero">
             <div class="card-body p-4 p-md-5 d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <div>
                     <h3 class="mb-2 fw-bold"><i class="fas fa-satellite-dish me-2"></i>Pusat Komando Administrator</h3>
@@ -19,9 +18,9 @@
 
     <!-- CLEAN CODE: Mengganti style inline dengan class border-start-5-* -->
     <div class="col-md-4 mb-4">
-        <div class="card shadow-sm border-0 card-stat-admin bg-white border-start-5-primary">
+        <div class="card shadow-sm border-0 card-stat-admin bg-white admin-stat-card stat-student">
             <div class="card-body p-4">
-                <i class="fas fa-user-graduate text-primary stat-icon-bg"></i>
+                <i class="fas fa-user-graduate text-info stat-icon-bg"></i>
                 <h6 class="text-muted fw-bold mb-2 text-uppercase letter-spacing-1">Total Siswa Terdaftar</h6>
                 <h2 class="fw-bold text-dark mb-0 fs-1">{{ $total_siswa }} <span class="fs-6 text-muted fw-normal">Siswa</span></h2>
             </div>
@@ -29,7 +28,7 @@
     </div>
 
     <div class="col-md-4 mb-4">
-        <div class="card shadow-sm border-0 card-stat-admin bg-white border-start-5-success">
+        <div class="card shadow-sm border-0 card-stat-admin bg-white admin-stat-card stat-teacher">
             <div class="card-body p-4">
                 <i class="fas fa-chalkboard-teacher text-success stat-icon-bg"></i>
                 <h6 class="text-muted fw-bold mb-2 text-uppercase letter-spacing-1">Total Guru Pengajar</h6>
@@ -39,7 +38,7 @@
     </div>
 
     <div class="col-md-4 mb-4">
-        <div class="card shadow-sm border-0 card-stat-admin bg-white border-start-5-danger">
+        <div class="card shadow-sm border-0 card-stat-admin bg-white admin-stat-card stat-admin">
             <div class="card-body p-4">
                 <i class="fas fa-user-shield text-danger stat-icon-bg"></i>
                 <h6 class="text-muted fw-bold mb-2 text-uppercase letter-spacing-1">Total Administrator</h6>
@@ -51,8 +50,8 @@
     <div class="col-md-12 mb-5">
         <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
             <div class="card-header bg-white border-bottom pt-4 pb-3 px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
-                <h5 class="fw-bold text-dark mb-0"><i class="fas fa-address-book text-primary me-2"></i>Direktori Seluruh Pengguna</h5>
-                <a href="{{ route('admin.pengguna') }}" class="btn btn-primary fw-bold shadow-sm rounded-pill px-4">
+                <h5 class="fw-bold text-dark mb-0"><i class="fas fa-address-book text-info me-2"></i>Direktori Seluruh Pengguna</h5>
+                <a href="{{ route('admin.pengguna') }}" class="btn btn-info text-white fw-bold shadow-sm rounded-pill px-4">
                     <i class="fas fa-users-cog me-1"></i> Kelola Pengguna
                 </a>
             </div>
@@ -95,7 +94,7 @@
                                     @elseif($u->hasRole('Guru'))
                                         <span class="badge bg-success bg-opacity-10 text-success border border-success rounded-pill px-3 py-1"><i class="fas fa-chalkboard-teacher me-1"></i> Guru</span>
                                     @else
-                                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary rounded-pill px-3 py-1"><i class="fas fa-user-graduate me-1"></i> Siswa</span>
+                                        <span class="badge bg-info bg-opacity-10 text-info border border-info rounded-pill px-3 py-1"><i class="fas fa-user-graduate me-1"></i> Siswa</span>
                                     @endif
                                 </td>
                             </tr>

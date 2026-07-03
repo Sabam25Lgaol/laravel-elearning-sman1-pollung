@@ -2,17 +2,6 @@
 
 @section('content')
 <style>
-    .bg-gradient-primary {
-        background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
-    }
-    .table-custom tbody tr {
-        transition: all 0.2s ease;
-    }
-    .table-custom tbody tr:hover {
-        background-color: #f8f9fa;
-        transform: scale(1.005);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
     .avatar-circle {
         width: 40px;
         height: 40px;
@@ -32,14 +21,14 @@
 
 <div class="row">
     <div class="col-md-12 mb-4">
-        <div class="card border-0 bg-gradient-primary text-white shadow-sm" style="border-radius: 15px;">
+        <div class="card border-0 bg-gradient-admin text-white shadow-sm rounded-4 admin-hero">
             <div class="card-body p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <div>
                     <h4 class="mb-1 fw-bold"><i class="fas fa-users-cog me-2"></i>Kelola Data Pengguna</h4>
                     <p class="mb-0 opacity-75"><i class="fas fa-info-circle me-1"></i> Tambah pengguna baru, lengkapi data NIS/NIP, dan tetapkan Hak Akses (Jabatan).</p>
                 </div>
                 <div class="d-flex gap-2">
-                    <button type="button" class="btn btn-light text-primary fw-bold shadow-sm rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#tambahPengguna">
+                    <button type="button" class="btn btn-light text-info fw-bold shadow-sm rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#tambahPengguna">
                         <i class="fas fa-user-plus me-1"></i> Tambah Akun Baru
                     </button>
                     <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-light fw-bold rounded-pill px-4">
@@ -71,8 +60,8 @@
     <div class="col-md-12 mb-5">
         <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
             <div class="card-header bg-white border-bottom pt-4 pb-3 px-4 d-flex justify-content-between align-items-center">
-                <h5 class="fw-bold text-dark mb-0"><i class="fas fa-list-ul text-primary me-2"></i>Daftar Pengguna Terdaftar</h5>
-                <span class="badge bg-primary rounded-pill px-3 py-2">{{ $users->count() }} Pengguna</span>
+                <h5 class="fw-bold text-dark mb-0"><i class="fas fa-list-ul text-info me-2"></i>Daftar Pengguna Terdaftar</h5>
+                <span class="badge bg-info rounded-pill px-3 py-2">{{ $users->count() }} Pengguna</span>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -91,7 +80,7 @@
                             <tr>
                                 <td class="px-4 py-3">
                                     <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-circle bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">
+                                        <div class="avatar-circle bg-info bg-opacity-10 text-info border border-info border-opacity-25">
                                             {{ strtoupper(substr($user->name, 0, 1)) }}
                                         </div>
                                         <div>
@@ -106,7 +95,7 @@
                                     @elseif($user->hasRole('Guru'))
                                         <span class="badge bg-success bg-opacity-10 text-success border border-success rounded-pill px-3 py-1"><i class="fas fa-chalkboard-teacher me-1"></i> Guru</span>
                                     @else
-                                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary rounded-pill px-3 py-1"><i class="fas fa-user-graduate me-1"></i> Siswa</span>
+                                        <span class="badge bg-info bg-opacity-10 text-info border border-info rounded-pill px-3 py-1"><i class="fas fa-user-graduate me-1"></i> Siswa</span>
                                     @endif
                                 </td>
                                 <td class="fw-bold text-secondary">
@@ -121,7 +110,7 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center gap-2 flex-wrap">
-                                        <button type="button" class="btn btn-sm btn-outline-primary fw-bold rounded-pill px-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#editPengguna{{ $user->id }}">
+                                        <button type="button" class="btn btn-sm btn-outline-info fw-bold rounded-pill px-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#editPengguna{{ $user->id }}">
                                             <i class="fas fa-edit"></i> Edit
                                         </button>
 
@@ -148,14 +137,19 @@
 <div class="modal fade text-start" id="editPengguna{{ $user->id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white border-0 py-3">
+            <div class="modal-header bg-info text-white border-0 py-3">
                 <h5 class="modal-title fw-bold"><i class="fas fa-user-edit me-2"></i>Lengkapi Data: {{ $user->name }}</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('admin.ubah_role', $user->id) }}" method="POST">
                 @csrf
                 <div class="modal-body bg-light p-4">
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-primary">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
+                        <label class="form-label fw-bold small text-muted text-uppercase">Email / Gmail Login *</label>
+                        <input type="email" name="email" class="form-control border-0 bg-light" placeholder="email@gmail.com" value="{{ $user->email }}" required>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
                         <label class="form-label fw-bold small text-muted text-uppercase">Tetapkan Jabatan *</label>
                         <select name="role" class="form-select role-select border-0 bg-light" required>
                             <option value="Siswa" {{ $user->hasRole('Siswa') ? 'selected' : '' }}>Siswa</option>
@@ -164,12 +158,12 @@
                         </select>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-primary">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
                         <label class="form-label fw-bold small text-muted text-uppercase">Nomor Induk (NIS/NIP) *</label>
                         <input type="text" name="nomor_induk" class="form-control border-0 bg-light" placeholder="Wajib diisi..." value="{{ $user->nomor_induk }}" required>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-primary kelas-container" style="display: {{ $user->hasRole('Siswa') ? 'block' : 'none' }};">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info kelas-container" style="display: {{ $user->hasRole('Siswa') ? 'block' : 'none' }};">
                         <label class="form-label fw-bold small text-muted text-uppercase">Pilih Kelas <span class="text-danger">*</span></label>
                         <select name="kelas" class="form-select kelas-select border-0 bg-light" {{ $user->hasRole('Siswa') ? 'required' : '' }}>
                             <option value="">-- Pilih Kelas --</option>
@@ -183,7 +177,7 @@
                 </div>
                 <div class="modal-footer bg-white border-0 pt-3 pb-4 px-4 d-flex justify-content-between">
                     <button type="button" class="btn btn-light fw-bold px-4" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary fw-bold px-4 shadow-sm rounded-pill"><i class="fas fa-save me-1"></i> Simpan Perubahan</button>
+                    <button type="submit" class="btn btn-info text-white fw-bold px-4 shadow-sm rounded-pill"><i class="fas fa-save me-1"></i> Simpan Perubahan</button>
                 </div>
             </form>
         </div>
@@ -194,7 +188,7 @@
 <div class="modal fade" id="tambahPengguna" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white border-0 py-3">
+            <div class="modal-header bg-info text-white border-0 py-3">
                 <h5 class="modal-title fw-bold"><i class="fas fa-user-plus me-2"></i>Tambah Pengguna Baru</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -202,17 +196,17 @@
                 @csrf
                 <div class="modal-body text-start bg-light p-4">
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-success">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
                         <label class="form-label fw-bold small text-muted text-uppercase">Nama Lengkap *</label>
                         <input type="text" name="name" class="form-control border-0 bg-light" placeholder="Masukkan nama lengkap" required>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-success">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
                         <label class="form-label fw-bold small text-muted text-uppercase">Email (Akun Login) *</label>
                         <input type="email" name="email" class="form-control border-0 bg-light" placeholder="email@sekolah.com" required>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-success">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
                         <label class="form-label fw-bold small text-muted text-uppercase">Tetapkan Jabatan *</label>
                         <select name="role" class="form-select role-select border-0 bg-light" required>
                             <option value="">-- Pilih Jabatan --</option>
@@ -222,7 +216,7 @@
                         </select>
                     </div>
 
-                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-success">
+                    <div class="bg-white p-3 rounded-3 shadow-sm mb-3 border-start border-4 border-info">
                         <label class="form-label fw-bold small text-muted text-uppercase">Nomor Induk (NIS/NIP) *</label>
                         <input type="text" name="nomor_induk" class="form-control border-0 bg-light" placeholder="Wajib diisi..." required>
                     </div>
@@ -237,13 +231,10 @@
                         </select>
                     </div>
 
-                    <div class="alert alert-info border-0 shadow-sm small mb-0 rounded-3">
-                        <i class="fas fa-info-circle me-1"></i> Password default akun baru adalah: <strong>password123</strong>
-                    </div>
                 </div>
                 <div class="modal-footer bg-white border-0 pt-3 pb-4 px-4 d-flex justify-content-between">
                     <button type="button" class="btn btn-light fw-bold px-4" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success fw-bold px-4 shadow-sm rounded-pill"><i class="fas fa-user-check me-1"></i> Daftarkan Pengguna</button>
+                    <button type="submit" class="btn btn-info text-white fw-bold px-4 shadow-sm rounded-pill"><i class="fas fa-user-check me-1"></i> Daftarkan Pengguna</button>
                 </div>
             </form>
         </div>

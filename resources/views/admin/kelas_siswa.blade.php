@@ -3,13 +3,13 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
-        <div class="card shadow-sm border-0 border-start border-info border-4">
+        <div class="card shadow-sm border-0 border-start border-info border-4 rounded-4">
             <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div>
-                    <h4 class="text-info mb-1"><i class="fas fa-users me-2"></i>Daftar Siswa Kelas: {{ $kelas->nama_kelas }}</h4>
+                    <h4 class="text-info mb-1 fw-bold"><i class="fas fa-users me-2"></i>Daftar Siswa Kelas: {{ $kelas->nama_kelas }}</h4>
                     <p class="text-muted mb-0">Wali Kelas: {{ $kelas->deskripsi ?? 'Belum ditentukan' }}</p>
                 </div>
-                <a href="{{ route('admin.kelas') }}" class="btn btn-outline-secondary">
+                <a href="{{ route('admin.kelas') }}" class="btn btn-outline-secondary fw-bold shadow-sm rounded-pill px-4">
                     <i class="fas fa-arrow-left me-1"></i> Kembali ke Daftar Kelas
                 </a>
             </div>
@@ -17,9 +17,9 @@
     </div>
 
     <div class="col-md-12">
-        <div class="card shadow-sm border-0">
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden border-top border-info border-4">
             <div class="card-header bg-white py-3">
-                <h6 class="mb-0 fw-bold text-secondary">Total Siswa: <span class="badge bg-primary">{{ $siswaDiKelas->count() }} Orang</span></h6>
+                <h6 class="mb-0 fw-bold text-secondary">Total Siswa: <span class="badge bg-info rounded-pill px-3 py-2">{{ $siswaDiKelas->count() }} Orang</span></h6>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">

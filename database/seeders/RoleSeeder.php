@@ -17,10 +17,10 @@ class RoleSeeder extends Seeder
 
         // 2. Mencari akun yang sudah ada, atau membuat baru jika belum ada
         $adminUser = User::firstOrCreate(
-            ['email' => 'sabamgaol25@gmail.com'], // Cari berdasarkan email ini
+            ['email' => 'sabamgaol25@gmail.com'],
             [
                 'name' => 'Administrator',
-                'password' => bcrypt('password123'), // Ini hanya dipakai kalau dia belum punya akun
+                'password' => bcrypt('password123'),
             ]
         );
 
