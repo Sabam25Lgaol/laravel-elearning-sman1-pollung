@@ -13,7 +13,7 @@
 
     // Kumpulan warna Gradient Ala Google Classroom (Hanya dipakai saat di halaman Dashboard Utama)
     $classGradients = [
-        'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)', // Biru
+        'linear-gradient(135deg, #0369a1 0%, #0284c7 100%)', // Biru
         'linear-gradient(135deg, #059669 0%, #10b981 100%)', // Hijau
         'linear-gradient(135deg, #dc2626 0%, #ef4444 100%)', // Merah
         'linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%)', // Ungu
@@ -22,8 +22,7 @@
     ];
 @endphp
 
-<div class="row guru-ui">
-
+<div class="row">
     @if(!$mode)
     {{-- ==========================================================
          BAGIAN INI HANYA MUNCUL DI DASHBOARD UTAMA (TIDAK ADA MODE)
@@ -43,8 +42,8 @@
     <!-- Statistik Ringkas -->
     <div class="col-6 col-md-4 mb-4">
         <div class="card guru-stat-card stat-amber shadow-sm border-0 h-100">
-            <div class="card-body py-3">
-                <div class="text-muted fw-bold text-uppercase mb-1" style="font-size: 0.7rem;">Tugas Belum Selesai</div>
+            <div class="card-body py-3 py-md-4">
+                <div class="text-muted small fw-bold text-uppercase mb-1" style="font-size: 0.75rem;">Tugas Belum Selesai</div>
                 <h3 class="fw-bold text-dark mb-0">{{ $tugasCount ?? 0 }} <small class="fs-6 text-muted fw-normal">Tugas</small></h3>
             </div>
         </div>
@@ -52,17 +51,17 @@
 
     <div class="col-6 col-md-4 mb-4">
         <div class="card guru-stat-card stat-emerald shadow-sm border-0 h-100">
-            <div class="card-body py-3">
-                <div class="text-muted fw-bold text-uppercase mb-1" style="font-size: 0.7rem;">Ujian Akan Datang</div>
+            <div class="card-body py-3 py-md-4">
+                <div class="text-muted small fw-bold text-uppercase mb-1" style="font-size: 0.75rem;">Ujian Akan Datang</div>
                 <h3 class="fw-bold text-dark mb-0">{{ $ujianCount ?? 0 }} <small class="fs-6 text-muted fw-normal">Ujian</small></h3>
             </div>
         </div>
     </div>
 
-    <div class="col-12 col-md-4 mb-4">
+    <div class="col-6 col-md-4 mb-4">
         <div class="card guru-stat-card stat-cyan shadow-sm border-0 h-100">
-            <div class="card-body py-3">
-                <div class="text-muted fw-bold text-uppercase mb-1" style="font-size: 0.7rem;">Total Materi</div>
+            <div class="card-body py-3 py-md-4">
+                <div class="text-muted small fw-bold text-uppercase mb-1" style="font-size: 0.75rem;">Total Materi</div>
                 <h3 class="fw-bold text-dark mb-0">{{ $materiCount ?? 0 }} <small class="fs-6 text-muted fw-normal">Materi</small></h3>
             </div>
         </div>
