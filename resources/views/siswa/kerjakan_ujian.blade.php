@@ -18,12 +18,10 @@
     @endif
 
     <div class="col-md-12 mb-4 sticky-top pt-3 z-3">
-        <!-- CLEAN CODE: Menggunakan .border-purple dari custom.css -->
-        <div class="card shadow-lg border-0 bg-white border-top border-5 border-purple rounded-4">
+        <div class="card shadow-lg border-0 bg-white border-top border-5 border-info rounded-4">
             <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-3 p-3">
                 <div>
-                    <!-- CLEAN CODE: Menggunakan .text-purple dari custom.css -->
-                    <h4 class="mb-1 fw-bold text-purple"><i class="fas fa-file-signature me-2"></i>{{ $ujian->judul_ujian }}</h4>
+                    <h4 class="mb-1 fw-bold text-info"><i class="fas fa-file-signature me-2"></i>{{ $ujian->judul_ujian }}</h4>
                     <p class="text-muted mb-0 fw-bold"><i class="fas fa-book me-1"></i> {{ $ujian->pelajaran->nama_pelajaran }}</p>
                 </div>
                 <div class="text-end bg-light p-2 rounded border border-danger shadow-sm">
@@ -39,15 +37,15 @@
             @csrf
 
             @forelse($ujian->soal as $index => $soal)
-            <!-- CLEAN CODE: Dinamis memanggil border-warning untuk essay, border-purple untuk PG -->
-            <div class="card shadow-sm border-0 mb-4 rounded-4 border-start border-5 border-{{ $soal->jenis_soal == 'essay' ? 'warning' : 'purple' }}">
+            <!-- Dinamis: border-warning untuk essay, border-info untuk Pilihan Ganda (selaras gaya guru) -->
+            <div class="card shadow-sm border-0 mb-4 rounded-4 border-start border-5 border-{{ $soal->jenis_soal == 'essay' ? 'warning' : 'info' }}">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="fw-bold text-dark mb-0">{{ $index + 1 }}. {{ $soal->pertanyaan }}</h5>
                         @if($soal->jenis_soal == 'essay')
                             <span class="badge bg-warning text-dark"><i class="fas fa-pen-nib me-1"></i> Essay</span>
                         @else
-                            <span class="badge bg-purple"><i class="fas fa-list-ul me-1"></i> Pilihan Ganda</span>
+                            <span class="badge bg-info"><i class="fas fa-list-ul me-1"></i> Pilihan Ganda</span>
                         @endif
                     </div>
 
@@ -116,9 +114,9 @@
                     <h5 class="text-danger mb-3 fw-bold"><i class="fas fa-exclamation-circle me-1"></i> Periksa kembali jawaban Anda!</h5>
                     <p class="text-muted">Pastikan semua soal sudah terisi sebelum menekan tombol kumpulkan.</p>
 
-                    <!-- CLEAN CODE: Menggunakan bg-purple, fs-5 -->
+                    <!-- Tombol kumpulkan, memakai warna info agar selaras gaya guru -->
                     <!-- PROTEKSI FRONTEND: ID disematkan untuk script JS Anti-Double Click -->
-                    <button type="submit" id="btnSubmitUjian" class="btn btn-lg bg-purple text-white px-5 py-3 fw-bold shadow mt-2 w-100 fs-5">
+                    <button type="submit" id="btnSubmitUjian" class="btn btn-lg btn-info text-white px-5 py-3 fw-bold shadow mt-2 w-100 fs-5">
                         <i class="fas fa-paper-plane me-2"></i> Kumpulkan Ujian Sekarang
                     </button>
                 </div>

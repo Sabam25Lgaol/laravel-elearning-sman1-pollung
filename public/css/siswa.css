@@ -2,28 +2,189 @@
    siswa.css - KOMPONEN KHUSUS HALAMAN SISWA
    ======================================================== */
 
+.siswa-ui {
+    --siswa-primary: #0284c7;
+    --siswa-primary-dark: #0369a1;
+    --siswa-soft: #f0f9ff;
+    --siswa-soft-strong: #e0f2fe;
+    --siswa-border: #dbe5f1;
+    --siswa-text: #0f172a;
+    --bs-primary-rgb: 2, 132, 199;
+    --bs-info-rgb: 2, 132, 199;
+}
+
+.siswa-ui .card {
+    border-radius: 1rem;
+    border-color: var(--siswa-border) !important;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06) !important;
+}
+
+.siswa-ui .text-primary,
+.siswa-ui .text-info {
+    color: var(--siswa-primary-dark) !important;
+}
+
+.siswa-ui .bg-primary,
+.siswa-ui .bg-info {
+    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity, 1)) !important;
+}
+
+.siswa-ui .btn-primary,
+.siswa-ui .btn-info {
+    --bs-btn-bg: var(--siswa-primary);
+    --bs-btn-border-color: var(--siswa-primary);
+    --bs-btn-hover-bg: var(--siswa-primary-dark);
+    --bs-btn-hover-border-color: var(--siswa-primary-dark);
+}
+
+.siswa-ui .btn-outline-primary,
+.siswa-ui .btn-outline-info {
+    --bs-btn-color: var(--siswa-primary-dark);
+    --bs-btn-border-color: var(--siswa-primary);
+    --bs-btn-hover-bg: var(--siswa-primary);
+    --bs-btn-hover-border-color: var(--siswa-primary);
+    --bs-btn-hover-color: #fff;
+}
+
+.siswa-ui .siswa-sidebar-toggle {
+    border: 0;
+    background: transparent;
+    width: calc(100% - 24px);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.siswa-ui .siswa-sidebar-toggle span {
+    display: inline-flex;
+    align-items: center;
+}
+
+.siswa-ui .siswa-toggle-icon {
+    font-size: 0.75rem;
+    opacity: 0.65;
+}
+
+.siswa-ui .siswa-sidebar-toggle[aria-expanded="true"] .siswa-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.siswa-ui .siswa-sidebar-submenu {
+    margin: -4px 16px 8px 54px;
+}
+
+.siswa-ui .siswa-sidebar-subitem {
+    display: block;
+    padding: 8px 12px;
+    margin-bottom: 4px;
+    border-radius: 10px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.siswa-ui .siswa-sidebar-subitem:hover,
+.siswa-ui .siswa-sidebar-subitem.active {
+    color: var(--siswa-primary-dark);
+    background: var(--siswa-soft-strong);
+}
+
 /* --- Dashboard Siswa --- */
+.siswa-dashboard {
+    width: 100%;
+}
+
+.siswa-hero {
+    background:
+        radial-gradient(circle at 93% 12%, rgba(2,132,199,0.13) 0 74px, transparent 75px),
+        linear-gradient(135deg, #ffffff 0%, #eef7ff 100%);
+    border: 1px solid rgba(2, 132, 199, 0.10) !important;
+    overflow: hidden;
+}
+
+.siswa-hero-content {
+    max-width: 760px;
+}
+
+.siswa-hero-illustration {
+    width: 116px;
+    height: 116px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 32px;
+    color: var(--siswa-primary);
+    background: rgba(2, 132, 199, 0.10);
+    font-size: 4.2rem;
+}
+
+.siswa-soft-badge,
+.siswa-teacher-badge {
+    background: var(--siswa-soft-strong) !important;
+    color: var(--siswa-primary-dark) !important;
+    border: 1px solid rgba(2, 132, 199, 0.26);
+}
+
+.siswa-subject-card {
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+.siswa-subject-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: var(--siswa-primary);
+}
+
+.siswa-subject-icon,
+.siswa-empty-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--siswa-soft-strong);
+    color: var(--siswa-primary-dark);
+    font-size: 1.45rem;
+}
+
+.siswa-action-card {
+    min-height: 78px;
+    color: var(--siswa-primary-dark);
+    background: #f8fbff;
+    border: 1px solid rgba(2, 132, 199, 0.22);
+}
+
+.siswa-action-card:hover {
+    color: #fff;
+    background: var(--siswa-primary);
+    border-color: var(--siswa-primary);
+}
+
+.siswa-empty-card {
+    background: #fff;
+}
+
 .card-pelajaran {
-    transition: all 0.3s ease-in-out;
     border-radius: 15px;
     overflow: hidden;
 }
-.card-pelajaran:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
-}
+
 .btn-menu {
     border-radius: 10px;
-    transition: all 0.2s ease;
 }
-.btn-menu:hover {
-    transform: scale(1.05);
-}
+
 .bg-gradient-primary {
-    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
 }
 .line-clamp-2 {
     min-height: 40px;
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -39,14 +200,10 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
 }
 .bg-gradient-info {
-    background: linear-gradient(135deg, #0dcaf0 0%, #0d6efd 100%);
+    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
 }
 .btn-lampiran {
     border-radius: 8px;
-    transition: all 0.2s ease;
-}
-.btn-lampiran:hover {
-    transform: scale(1.03);
 }
 .materi-teks {
     white-space: pre-line;
@@ -55,16 +212,11 @@
 
 /* --- Tugas Siswa --- */
 .card-tugas {
-    transition: all 0.3s ease;
     border-radius: 15px;
     overflow: hidden;
 }
-.card-tugas:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.1) !important;
-}
 .bg-gradient-warning {
-    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
 }
 .file-upload-box {
     border: 2px dashed #ced4da;
@@ -88,13 +240,92 @@
 
 /* --- Absensi Siswa & Statistik --- */
 .card-stat {
-    transition: all 0.3s ease;
     border-radius: 12px;
 }
-.card-stat:hover {
-    transform: translateY(-5px);
+.bg-gradient-success {
+    background: linear-gradient(135deg, #15803d 0%, #22c55e 100%);
+}
+
+.siswa-stat-card { overflow: hidden; }
+.siswa-stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.siswa-ui .siswa-stat-icon.bg-warning,
+.siswa-ui .siswa-stat-icon.bg-primary,
+.siswa-ui .siswa-stat-icon.bg-info {
+    background: var(--siswa-soft-strong) !important;
+    color: var(--siswa-primary-dark) !important;
+}
+
+/* --- Warna Ungu (Ujian & Kerjakan Ujian) ---
+   Class ini dipanggil di ujian.blade.php & kerjakan_ujian.blade.php
+   (text-purple, bg-purple, border-purple) tapi sebelumnya belum
+   pernah didefinisikan di CSS manapun, sehingga tampil transparan/polos. */
+:root {
+    --siswa-purple: #7c3aed;
+    --siswa-purple-dark: #6d28d9;
+}
+.text-purple {
+    color: var(--siswa-purple) !important;
+}
+.bg-purple {
+    background-color: var(--siswa-purple) !important;
+    color: #fff;
+}
+.bg-purple:hover {
+    background-color: var(--siswa-purple-dark) !important;
+}
+.border-purple {
+    border-color: var(--siswa-purple) !important;
+}
+.badge.bg-purple {
+    color: #fff;
+}
+
+/* --- Kartu Ringkasan Absensi ---
+   Class border-bottom-5-success/warning/info/danger dipanggil di
+   absensi.blade.php tapi sebelumnya tidak pernah didefinisikan,
+   sehingga border warna di bawah kartu tidak pernah muncul. */
+.border-bottom-5-success { border-bottom: 5px solid #16a34a !important; }
+.border-bottom-5-warning { border-bottom: 5px solid #f59e0b !important; }
+.border-bottom-5-info    { border-bottom: 5px solid #0284c7 !important; }
+.border-bottom-5-danger  { border-bottom: 5px solid #e11d48 !important; }
+
+/* --- Tombol Aksi Tabel (dipakai di dashboard mode & tabel lain, gaya guru) --- */
+.guru-action-button {
+    width: 170px;
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 1px;
+}
+
+/* --- Efek Hover Card & Action Box Dashboard --- */
+.card-kelas-guru {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-kelas-guru:hover {
+    transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
 }
-.bg-gradient-success {
-    background: linear-gradient(135deg, #198754 0%, #20c997 100%);
+.action-box {
+    background-color: #ffffff;
+    border-color: #e2e8f0 !important;
+}
+.hover-primary:hover { border-color: #0284c7 !important; background-color: #f0f9ff; }
+.hover-warning:hover { border-color: #f59e0b !important; background-color: #fffbeb; }
+.hover-danger:hover { border-color: #e11d48 !important; background-color: #fff1f2; }
+.hover-success:hover { border-color: #16a34a !important; background-color: #f0fdf4; }
+
+.action-btn:hover {
+    background-color: #0369a1 !important;
+    transform: scale(1.02);
 }

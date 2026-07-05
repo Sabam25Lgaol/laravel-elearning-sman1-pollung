@@ -3,21 +3,21 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mb-4">
-        <div class="card border-0 bg-gradient-success text-white shadow-sm rounded-4">
-            <div class="card-body p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div class="card shadow-sm border-0 border-start border-info border-4 rounded-4">
+            <div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <div>
-                    <h4 class="mb-1 fw-bold"><i class="fas fa-calendar-check me-2"></i>Riwayat Absensi: {{ $pelajaran->nama_pelajaran }}</h4>
-                    <p class="mb-0 opacity-75"><i class="fas fa-chart-pie me-1"></i> Pantau rekap kehadiranmu di mata pelajaran ini secara *real-time*.</p>
+                    <h4 class="text-info mb-1 fw-bold"><i class="fas fa-calendar-check me-2"></i>Riwayat Absensi: {{ $pelajaran->nama_pelajaran }}</h4>
+                    <p class="text-muted mb-0">Pantau rekap kehadiranmu di mata pelajaran ini.</p>
                 </div>
-                <a href="{{ route('siswa.dashboard') }}" class="btn btn-light text-success fw-bold shadow-sm rounded-pill px-4">
-                    <i class="fas fa-arrow-left me-1"></i> Kembali
+                <a href="{{ route('siswa.dashboard') }}" class="btn btn-outline-secondary fw-bold shadow-sm rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-1"></i> Kembali ke Dashboard
                 </a>
             </div>
         </div>
     </div>
 
     <div class="col-md-12 mb-2 d-flex align-items-center justify-content-between">
-        <h5 class="fw-bold text-dark border-bottom pb-2 border-2 border-success d-inline-block">Ringkasan Kehadiran</h5>
+        <h5 class="fw-bold text-dark border-bottom pb-2 border-2 border-info d-inline-block">Ringkasan Kehadiran</h5>
     </div>
 
     <div class="col-6 col-md-3 mb-4">
@@ -58,9 +58,9 @@
     </div>
 
     <div class="col-md-12 mb-5">
-        <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+        <div class="card shadow-sm border-0 border-top border-info border-4 rounded-4 overflow-hidden">
             <div class="card-header bg-white border-bottom pt-4 pb-3 px-4">
-                <h5 class="fw-bold text-dark mb-0"><i class="fas fa-list-alt text-success me-2"></i>Rincian per Pertemuan</h5>
+                <h5 class="fw-bold text-dark mb-0"><i class="fas fa-list-alt text-info me-2"></i>Rincian per Pertemuan</h5>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/ujian.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 </head>
-<body class="@if(Auth::check() && Auth::user()->hasRole('Guru')) guru-ui @elseif(Auth::check() && Auth::user()->hasRole('Admin')) admin-ui @endif">
+<body class="@if(Auth::check() && Auth::user()->hasRole('Guru')) guru-ui @elseif(Auth::check() && Auth::user()->hasRole('Admin')) admin-ui @elseif(Auth::check() && Auth::user()->hasRole('Siswa')) siswa-ui @endif">
 
     <div class="wrapper">
 
@@ -100,13 +100,16 @@
                     </a>
 
                     <div class="sidebar-header-text">Ruang Belajar</div>
-                    <a href="#" class="sidebar-link" onclick="alert('Silakan pilih mata pelajaran di Dashboard terlebih dahulu untuk mengakses Materi & Tugas.'); return false;">
-                        <i class="fas fa-book-reader"></i> Akses Materi & Tugas
+                    <a href="{{ route('siswa.dashboard', ['mode' => 'materi']) }}#daftar-pelajaran" class="sidebar-link {{ request('mode') === 'materi' || request()->is('siswa/pelajaran/*/materi*') ? 'active' : '' }}">
+                        <i class="fas fa-book-open"></i> Materi Pembelajaran
                     </a>
-                    <a href="#" class="sidebar-link" onclick="alert('Silakan pilih mata pelajaran di Dashboard terlebih dahulu untuk mengikuti Ujian Online.'); return false;">
+                    <a href="{{ route('siswa.dashboard', ['mode' => 'tugas']) }}#daftar-pelajaran" class="sidebar-link {{ request('mode') === 'tugas' || request()->is('siswa/pelajaran/*/tugas*') ? 'active' : '' }}">
+                        <i class="fas fa-clipboard-list"></i> Tugas Siswa
+                    </a>
+                    <a href="{{ route('siswa.dashboard', ['mode' => 'ujian']) }}#daftar-pelajaran" class="sidebar-link {{ request('mode') === 'ujian' || request()->is('siswa/pelajaran/*/ujian*') || request()->is('siswa/ujian*') ? 'active' : '' }}">
                         <i class="fas fa-laptop-code"></i> Ujian Online
                     </a>
-                    <a href="#" class="sidebar-link" onclick="alert('Silakan pilih mata pelajaran di Dashboard terlebih dahulu untuk melihat Riwayat Absensi.'); return false;">
+                    <a href="{{ route('siswa.dashboard', ['mode' => 'absensi']) }}#daftar-pelajaran" class="sidebar-link {{ request('mode') === 'absensi' || request()->is('siswa/pelajaran/*/absensi*') || request()->is('siswa/absensi*') ? 'active' : '' }}">
                         <i class="fas fa-history"></i> Riwayat Absensi
                     </a>
                 @endhasrole

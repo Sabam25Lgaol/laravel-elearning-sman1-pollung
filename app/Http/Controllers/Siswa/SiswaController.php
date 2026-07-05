@@ -23,8 +23,30 @@ class SiswaController extends Controller
 {
     public function dashboard()
     {
-        $pelajarans = Auth::user()->pelajaran()->with('guru')->get();
-        return view('siswa.dashboard', compact('pelajarans'));
+        $user = Auth::user();
+        $pelajarans = $user->pelajaran()->with('guru')->get();
+        $now = Carbon::now();
+
+        // Mengambil semua ID pelajaran siswa
+        $pelajaranIds = $pelajarans->pluck('id');
+
+        // Menghitung jumlah tugas yang belum dikumpulkan dan belum lewat deadline
+        $tugasCount = Tugas::whereIn('pelajaran_id', $pelajaranIds)
+            ->where('tenggat_waktu', '>', $now)
+            ->whereDoesntHave('pengumpulan', function ($query) use ($user) {
+                $query->where('siswa_id', $user->id);
+            })
+            ->count();
+
+        // Menghitung jumlah ujian yang akan datang
+        $ujianCount = Ujian::whereIn('pelajaran_id', $pelajaranIds)
+            ->where('waktu_mulai', '>', $now)
+            ->count();
+
+        // Menghitung jumlah materi yang ada
+        $materiCount = Materi::whereIn('pelajaran_id', $pelajaranIds)->count();
+
+        return view('siswa.dashboard', compact('pelajarans', 'tugasCount', 'ujianCount', 'materiCount'));
     }
 
     public function materi($pelajaran_id)
