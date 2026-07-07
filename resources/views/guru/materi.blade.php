@@ -45,9 +45,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label fw-bold small text-dark">Upload File (PDF/Word/PPT)</label>
-                        <input type="file" name="file_materi" class="form-control shadow-sm" accept=".pdf,.doc,.docx,.ppt,.pptx">
-                        <small class="text-danger" style="font-size: 11px;"><i class="fas fa-info-circle"></i> Maksimal 5MB.</small>
+                        <label class="form-label fw-bold small text-dark">Upload File (PDF/Word/PPT/Excel/Gambar/ZIP)</label>
+                        <input type="file" name="file_materi" class="form-control shadow-sm" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.png,.jpg,.jpeg,.gif,.zip,.rar">
+                        <small class="text-danger" style="font-size: 11px;"><i class="fas fa-info-circle"></i> Maksimal 10MB.</small>
                     </div>
 
                     <div class="mb-4">
@@ -225,8 +225,8 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold small text-dark">Ganti File (Opsional)</label>
-                            <input type="file" name="file_materi" class="form-control shadow-sm" accept=".pdf,.doc,.docx,.ppt,.pptx">
-                            <small class="text-muted"><i class="fas fa-info-circle"></i> Biarkan kosong jika tidak ingin mengganti file lama.</small>
+                            <input type="file" name="file_materi" class="form-control shadow-sm" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.png,.jpg,.jpeg,.gif,.zip,.rar">
+                            <small class="text-muted"><i class="fas fa-info-circle"></i> Biarkan kosong jika tidak ingin mengganti file lama. Maksimal 10MB.</small>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold small text-dark">Ganti Link YouTube (Opsional)</label>

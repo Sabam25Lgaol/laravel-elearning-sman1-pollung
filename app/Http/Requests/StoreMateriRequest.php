@@ -33,7 +33,7 @@ class StoreMateriRequest extends FormRequest
             'judul_materi' => 'required|string|max:255',
             'isi_materi' => 'nullable|string',
             'link_youtube' => 'nullable|url',
-            'file_materi' => 'nullable|mimes:pdf,doc,docx,ppt,pptx|max:5120', // Maks 5MB
+            'file_materi' => 'nullable|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx,png,jpg,jpeg,gif,zip,rar|max:10240', // Maks 10MB
         ];
     }
 }
